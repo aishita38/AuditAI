@@ -180,6 +180,7 @@ def list_claims(
     page: int = Query(1, ge=1),
     page_size: int = Query(20, ge=1, le=100),
     status_filter: Optional[str] = Query(None, alias="status"),
+    search: Optional[str] = Query(None),
     sort_by: str = Query("submitted_at", regex="^(claim_id|employee_name|vendor_name|claimed_amount|claimed_date|submitted_at|status)$"),
     sort_order: str = Query("desc", regex="^(asc|desc)$"),
     db: Session = Depends(get_db),
@@ -189,6 +190,17 @@ def list_claims(
 
     if status_filter:
         query = query.filter(ExpenseClaim.status == status_filter)
+
+    if search:
+        from sqlalchemy import or_
+        search_term = f"%{search}%"
+        query = query.filter(
+            or_(
+                ExpenseClaim.claim_id.ilike(search_term),
+                ExpenseClaim.employee_name.ilike(search_term),
+                ExpenseClaim.vendor_name.ilike(search_term)
+            )
+        )
 
     # Sorting
     sort_col = getattr(ExpenseClaim, sort_by, ExpenseClaim.submitted_at)

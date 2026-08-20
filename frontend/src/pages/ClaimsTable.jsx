@@ -16,8 +16,19 @@ export default function ClaimsTable() {
   const [statusFilter, setStatusFilter] = useState('');
   const [sortBy, setSortBy] = useState('submitted_at');
   const [sortOrder, setSortOrder] = useState('desc');
+  const [search, setSearch] = useState('');
+  const [debouncedSearch, setDebouncedSearch] = useState('');
   
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearch(search);
+      setPage(1);
+    }, 300);
+
+    return () => clearTimeout(handler);
+  }, [search]);
 
   const fetchClaims = async () => {
     setLoading(true);
@@ -29,6 +40,7 @@ export default function ClaimsTable() {
         sort_order: sortOrder,
       };
       if (statusFilter) params.status = statusFilter;
+      if (debouncedSearch) params.search = debouncedSearch;
       
       const response = await claimsApi.list(params);
       setData(response.data.claims);
@@ -42,7 +54,7 @@ export default function ClaimsTable() {
 
   useEffect(() => {
     fetchClaims();
-  }, [page, statusFilter, sortBy, sortOrder]);
+  }, [page, statusFilter, sortBy, sortOrder, debouncedSearch]);
 
   const handleSort = (key) => {
     if (sortBy === key) {
@@ -100,7 +112,14 @@ export default function ClaimsTable() {
           <div className="flex gap-4 items-center">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted" size={16} />
-              <input type="text" className="input pl-10" placeholder="Search claims..." style={{ width: 250 }} />
+              <input 
+                type="text" 
+                className="input pl-10" 
+                placeholder="Search claims..." 
+                style={{ width: 250 }} 
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
             </div>
             
             <div className="flex items-center gap-2">
