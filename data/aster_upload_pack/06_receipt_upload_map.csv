@@ -1,0 +1,4 @@
+filename,claim_id,receipt_id,vendor,amount,date
+receipt_AST-DEMO-CLM-001.png,AST-DEMO-CLM-001,AST-DEMO-RCP-001,Aster Test Supplier 001,4500,2025-02-28
+receipt_AST-DEMO-CLM-002.png,AST-DEMO-CLM-002,AST-DEMO-RCP-002,Aster Test Supplier 002,4500,2025-02-28
+receipt_AST-DEMO-CLM-003.png,AST-DEMO-CLM-003,AST-DEMO-RCP-003,Aster Test Supplier 003,6000,2025-02-28

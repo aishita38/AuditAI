@@ -2,6 +2,7 @@
 AuditAI — API endpoints for ML-based fraud scoring and dashboard summaries.
 """
 import logging
+import json
 from collections import defaultdict
 from typing import Any, Dict
 
@@ -18,6 +19,7 @@ from backend.app.ml.explainer import compute_shap_values, get_top_features
 from backend.app.ml.pipeline import load_pipeline, score_claims, train_claims, transform_features
 from backend.app.models.expense import ExpenseClaim, FraudPrediction, Case, CaseAuditTrail
 from backend.app.api.analytics import get_case_cycle_metrics
+from backend.app.detection_strategy import model_decision, strategy, PATH as STRATEGY_PATH
 
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/v1/fraud", tags=["Fraud"])
@@ -322,7 +324,7 @@ def get_fraud_summary(db: Session = Depends(get_db)):
 def train_models(trust_synthetic_labels: bool = False, db: Session = Depends(get_db),
                  user: AuthUser = Depends(require_roles("admin"))):
     """Train on reviewed normal cases, or explicitly trusted synthetic labels."""
-    claims = db.query(ExpenseClaim).order_by(ExpenseClaim.submitted_at, ExpenseClaim.id).all()
+    claims = db.query(ExpenseClaim).filter(~ExpenseClaim.claim_id.like('TXN%')).order_by(ExpenseClaim.submitted_at, ExpenseClaim.id).all()
     records = [claim_record(c) for c in claims]
     labels = [int(c.is_fraud) if trust_synthetic_labels else
               (0 if c.case and c.case.status == "closed_approved" else
@@ -331,6 +333,9 @@ def train_models(trust_synthetic_labels: bool = False, db: Session = Depends(get
         artifacts = train_claims(records, labels, config)
     except ValueError as exc:
         raise HTTPException(422, str(exc)) from exc
+    # Scores from a newly trained bundle cannot reuse a previous bundle's cutoffs.
+    STRATEGY_PATH.write_text(json.dumps({key:dict(threshold=.5,run_id=artifacts['metadata']['run_id'],
+        basis='New model default; run the benchmark calibration before applying cohort cutoffs') for key in ('aster','original')},indent=2),encoding='utf-8')
     return {"status": "success", "message": "Behavioral v3 model trained with OCR and holiday-policy features.",
             "metadata": artifacts["metadata"]}
 
@@ -339,6 +344,11 @@ def train_models(trust_synthetic_labels: bool = False, db: Session = Depends(get
 def score_all_claims(rescore: bool = False, db: Session = Depends(get_db),
                      user: AuthUser = Depends(get_current_user)):
     """Score all unscored claims through the pipeline."""
+    return score_selected_claims(db, user, rescore=rescore)
+
+
+def score_selected_claims(db, user, rescore=False, claim_ids=None):
+    """Use the unchanged model on selected upload IDs with full historical features."""
     if rescore and "admin" not in (user.roles or []):
         raise HTTPException(403, "Only an administrator can rescore existing claims.")
     pipeline = load_pipeline(config)
@@ -348,9 +358,14 @@ def score_all_claims(rescore: bool = False, db: Session = Depends(get_db),
     # Rebuild the complete historical ledger, then select targets in the same
     # order as ORM claims. Never compute history from only the pending subset.
     all_claims = db.query(ExpenseClaim).order_by(ExpenseClaim.submitted_at, ExpenseClaim.id).all()
-    claims = [c for c in all_claims if c.status in ("pending", "processing") or
+    claims = [c for c in all_claims if (c.claim_id in claim_ids and c.status not in ("approved", "rejected"))] if claim_ids is not None else [c for c in all_claims if c.status in ("pending", "processing") or (c.status == "flagged" and c.prediction is None) or
               (rescore and c.status in ("scored", "flagged"))]
+    all_claims = [c for c in all_claims if strategy(c.claim_id)['model_enabled']]
+    claims = [c for c in claims if strategy(c.claim_id)['model_enabled']]
     if not claims:
+        from backend.app.policy_service import run_checks
+        run_checks(db, True)
+        db.commit()
         return {"status": "success", "scored_count": 0, "flagged_count": 0}
     try:
         records = [claim_record(c) for c in all_claims]
@@ -361,6 +376,8 @@ def score_all_claims(rescore: bool = False, db: Session = Depends(get_db),
         features_list = [by_id[c.claim_id] for c in claims]
         feature_matrix = np.asarray([[f[n] for n in feature_names] for f in features_list])
         results = score_claims(feature_matrix, pipeline, config)
+        for claim, result in zip(claims, results):
+            result['is_flagged'] = model_decision(claim.claim_id, result['combined_fraud_score'])
     except ValueError as exc:
         raise HTTPException(422, str(exc)) from exc
     # Holiday receipts are a policy exception: the rule flags them even when
@@ -398,7 +415,7 @@ def score_all_claims(rescore: bool = False, db: Session = Depends(get_db),
         if claim.prediction:
             db.delete(claim.prediction)
             db.flush()
-        if rescore and claim.audit_report:
+        if (rescore or claim_ids is not None) and claim.audit_report:
             # A generated report cites the previous score and evidence. It is
             # safer to require regeneration after a model or policy rescore.
             db.delete(claim.audit_report)
@@ -412,6 +429,9 @@ def score_all_claims(rescore: bool = False, db: Session = Depends(get_db),
             is_flagged=is_flagged,
             shap_values=shap_vals if is_flagged else None,
             feature_values={**features_list[i], '_model_version': 3,
+                            '_model_run_id': pipeline.get('metadata', {}).get('run_id'),
+                            '_model_threshold': strategy(claim.claim_id)['threshold'],
+                            '_model_enabled': strategy(claim.claim_id)['model_enabled'],
                             '_event_time_known': float(time_known_by_id[claim.claim_id]),
                             '_holiday_policy_flag': float(holiday_policy_flag),
                             '_supervised_score': float(family == 'supervised')},
@@ -436,7 +456,7 @@ def score_all_claims(rescore: bool = False, db: Session = Depends(get_db),
                     case_id=case.id,
                     action="created",
                     performed_by="system",
-                    notes=f"Claim flagged by ML pipeline. Combined Score: {res['combined_fraud_score']:.4f}"
+                    notes=f"Review signal: model={res['is_flagged']}, holiday policy={holiday_policy_flag}; score={res['combined_fraud_score']:.4f}; cutoff={strategy(claim.claim_id)['threshold']:.8f}"
                 )
                 db.add(trail)
             elif case.status == "cancelled_unflagged":
@@ -458,6 +478,9 @@ def score_all_claims(rescore: bool = False, db: Session = Depends(get_db),
                     notes="The refreshed score no longer flags this claim; no reviewer had acted.",
                 ))
 
+    from backend.app.policy_service import run_checks
+    run_checks(db,True)
+    flagged_count = sum(c.status in ('flagged','processing') for c in claims)
     db.commit()
 
     return {

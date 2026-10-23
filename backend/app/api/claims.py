@@ -25,6 +25,8 @@ from backend.app.auth.security import (
 )
 from backend.app.db import Base, engine, get_db
 from backend.app.models.auth import AuthUser, ClaimContributor
+from backend.app.models.policy import ClaimPolicy
+from backend.app.policy_service import run_checks
 from backend.app.models.expense import (
     AuditReport,
     ExpenseClaim,
@@ -153,6 +155,7 @@ async def upload_claims(
     entity_id = default_entity.id if default_entity else None
 
     claims_to_add = []
+    policy_inputs = {}
     for idx, row in df.iterrows():
         try:
             claim_id = str(row["claim_id"]).strip()
@@ -166,6 +169,13 @@ async def upload_claims(
             amount = Decimal(amt_raw)
             if not amount.is_finite():
                 raise ValueError('Amount must be finite.')
+            if any(pd.isna(row[k]) or not str(row[k]).strip() for k in ['claim_id','employee_id','employee_name','vendor_name']):
+                raise ValueError('Claim ID, employee ID/name and vendor cannot be blank.')
+            from backend.app.api.policies import Inputs
+            supplied = {k:row[k] for k in Inputs.model_fields if k in row and pd.notna(row[k])}
+            if not has_role(user,'admin'):
+                supplied = {k:v for k,v in supplied.items() if k not in ('source_approver_id','source_approver_limit','business_exception')}
+            metadata = Inputs(**supplied).model_dump(mode='json',exclude_unset=True)
 
             # Parse date
             date_val = pd.to_datetime(row["claimed_date"]).date()
@@ -213,6 +223,7 @@ async def upload_claims(
                     extraction_method='imported', extraction_confidence=confidence)
                 claim.receipt = receipt
             claims_to_add.append(claim)
+            policy_inputs[claim_id] = metadata
             existing_claim_ids.add(claim_id) # prevent duplicate inserts from the same file
             loaded += 1
         except Exception as e:
@@ -221,13 +232,18 @@ async def upload_claims(
     if claims_to_add:
         db.add_all(claims_to_add)
         db.flush()
+        db.add_all([ClaimPolicy(claim_id=c.claim_id,inputs=policy_inputs[c.claim_id]) for c in claims_to_add])
         db.add_all([
             ClaimContributor(claim_id=claim.claim_id, user_id=user.id, source="claim_upload")
             for claim in claims_to_add
         ])
+        run_checks(db,True)
         db.commit()
 
+    from backend.app.automatic_checks import after_import
+    checks=after_import(db,user,'claims',claim_ids=[c.claim_id for c in claims_to_add]) if claims_to_add else None
     return UploadResponse(
+        checks=checks,
         status="success" if not errors else "partial_success",
         message=f"Loaded {loaded} claims.",
         processed_count=len(df),
@@ -421,6 +437,7 @@ def get_claim_detail(claim_id: str, db: Session = Depends(get_db),
 
     return {
         "claim": claim_resp,
+        "policy": (db.get(ClaimPolicy,claim_id).result if db.get(ClaimPolicy,claim_id) else None),
         "ocr_result": ocr_resp,
         "prediction": pred_resp,
         "audit_report": report_resp,

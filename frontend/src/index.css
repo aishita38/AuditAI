@@ -854,3 +854,5 @@ body,
     grid-template-columns: 1fr;
   }
 }
+
+.login-logo { display: block; width: 140px; height: 112px; object-fit: contain; image-rendering: pixelated; margin: -12px 0 8px -16px; }

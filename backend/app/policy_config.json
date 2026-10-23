@@ -1,0 +1,20 @@
+{
+  "version": "aster-demo-1",
+  "company": "Aster Precision Components (fictional demo policy)",
+  "currency": "INR",
+  "default_checker_limit": 50000,
+  "high_value_threshold": 250000,
+  "receipt_relative_tolerance": 0.05,
+  "receipt_absolute_tolerance": 10,
+  "minimum_ocr_confidence": 0.5,
+  "split_threshold": 50000,
+  "split_window": "same local calendar day",
+  "duplicate_window_days": 30,
+  "sequence_gap_threshold": 100,
+  "round_materiality": 50000,
+  "round_multiple": 1000,
+  "timezone": "Asia/Kolkata",
+  "business_start_hour": 9,
+  "business_end_hour": 18,
+  "suspicious_phrases": ["off-the-books", "facilitation", "undisclosed"]
+}

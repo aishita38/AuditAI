@@ -139,6 +139,10 @@ def review_block_reason(db: Session, user: AuthUser, claim, role: str) -> str | 
             return "The maker must submit an authenticated recommendation first."
         if any(entry.performed_by == f"maker: {user.email}" for entry in case.audit_trail):
             return "You already acted as maker on this case and cannot sign off as checker."
+        from backend.app.policy_service import approval_block
+        authority_reason = approval_block(db,user,claim)
+        if authority_reason:
+            return authority_reason
     return None
 
 

@@ -1,0 +1,347 @@
+{
+  "scope": "Synthetic deterministic rule fixtures, not production fraud labels.",
+  "findings": [
+    {
+      "rule_id": "VENDOR_SHARED_BANK",
+      "involved_record_ids": {
+        "vendors": [
+          "VB1",
+          "VB2"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "VENDOR_SHELL_NETWORK",
+      "involved_record_ids": {
+        "vendors": [
+          "VB1",
+          "VB2"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "VENDOR_SHARED_ADDRESS",
+      "involved_record_ids": {
+        "vendors": [
+          "VA1",
+          "VA2"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "VENDOR_SHELL_NETWORK",
+      "involved_record_ids": {
+        "vendors": [
+          "VA1",
+          "VA2"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "VENDOR_SHARED_PHONE",
+      "involved_record_ids": {
+        "vendors": [
+          "VP1",
+          "VP2"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "VENDOR_SHELL_NETWORK",
+      "involved_record_ids": {
+        "vendors": [
+          "VP1",
+          "VP2"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "VENDOR_SHELL_NETWORK",
+      "involved_record_ids": {
+        "vendors": [
+          "VN1",
+          "VN2",
+          "VN3"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "VENDOR_INVALID_TAX_ID",
+      "involved_record_ids": {
+        "vendors": [
+          "BADPAN"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "VENDOR_INVALID_TAX_ID",
+      "involved_record_ids": {
+        "vendors": [
+          "BADGST"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "VENDOR_INVALID_TAX_ID",
+      "involved_record_ids": {
+        "vendors": [
+          "PANMISMATCH"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "VENDOR_NEW_LARGE_PAYMENT",
+      "involved_record_ids": {
+        "vendors": [
+          "NEWLARGE"
+        ],
+        "payments": [],
+        "employees": [],
+        "transfers": [
+          "VT-NEWLARGE"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_GHOST_EMPLOYEE",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "GHOSTP0"
+        ],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "PAYROLL_GHOST_EMPLOYEE",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "GHOSTP1"
+        ],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "PAYROLL_GHOST_EMPLOYEE",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "GHOSTP2"
+        ],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "PAYROLL_AFTER_EXIT",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "EXITP0"
+        ],
+        "employees": [
+          "EXIT0"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_BEFORE_JOIN",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "JOINP0"
+        ],
+        "employees": [
+          "JOIN0"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_AFTER_EXIT",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "EXITP1"
+        ],
+        "employees": [
+          "EXIT1"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_BEFORE_JOIN",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "JOINP1"
+        ],
+        "employees": [
+          "JOIN1"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_SALARY_MISMATCH",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "SALARYP"
+        ],
+        "employees": [
+          "SALARY"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_DUPLICATE_PAYMENT",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "DUPP1",
+          "DUPP2"
+        ],
+        "employees": [
+          "DUP"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_BANK_MISMATCH",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "BANKCHANGEP"
+        ],
+        "employees": [
+          "BANKCHANGE"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_DUPLICATE_PAYEE",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "SHAREP1",
+          "SHAREP2"
+        ],
+        "employees": [
+          "SHARE1",
+          "SHARE2"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_DUPLICATE_PAYEE",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [],
+        "employees": [
+          "PAN1",
+          "PAN2"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_DUPLICATE_PAYEE",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "CROSSP"
+        ],
+        "employees": [
+          "CROSSROSTER"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_GHOST_EMPLOYEE",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "CROSSP"
+        ],
+        "employees": []
+      }
+    }
+  ],
+  "decoys": {
+    "VENDOR_SHARED_BANK": [
+      "NAMEDECOY1",
+      "NAMEDECOY2",
+      "EMPTY1",
+      "EMPTY2"
+    ],
+    "VENDOR_SHARED_ADDRESS": [
+      "NAMEDECOY1",
+      "NAMEDECOY2",
+      "EMPTY1",
+      "EMPTY2"
+    ],
+    "VENDOR_SHARED_PHONE": [
+      "NAMEDECOY1",
+      "NAMEDECOY2",
+      "EMPTY1",
+      "EMPTY2"
+    ],
+    "VENDOR_SHELL_NETWORK": [
+      "NAMEDECOY1",
+      "NAMEDECOY2",
+      "EMPTY1",
+      "EMPTY2"
+    ],
+    "VENDOR_INVALID_TAX_ID": [
+      "BASEV00",
+      "EMPTY1",
+      "EMPTY2"
+    ],
+    "VENDOR_NEW_LARGE_PAYMENT": [
+      "LIMITDECOY",
+      "DAYDECOY"
+    ],
+    "PAYROLL_GHOST_EMPLOYEE": [
+      "BASEP00"
+    ],
+    "PAYROLL_AFTER_EXIT": [
+      "EXITDAYP"
+    ],
+    "PAYROLL_BEFORE_JOIN": [
+      "JOINDAYP"
+    ],
+    "PAYROLL_DUPLICATE_PAYEE": [
+      "OTHERPERIOD",
+      "MISSINGBANK"
+    ],
+    "PAYROLL_SALARY_MISMATCH": [
+      "TOLERANCEP"
+    ],
+    "PAYROLL_DUPLICATE_PAYMENT": [
+      "PERIODP1",
+      "PERIODP2"
+    ],
+    "PAYROLL_BANK_MISMATCH": [
+      "MISSINGBANKP",
+      "BASEP00"
+    ]
+  }
+}

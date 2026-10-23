@@ -1,0 +1,16 @@
+.review-case-row { cursor: pointer; }
+.review-case-row:hover, .review-case-row:focus-within { background: rgba(246,143,98,.12); }
+.review-case-row:focus-visible, .case-number-link:focus-visible, .record-link:focus-visible { outline: 3px solid var(--accent-primary,coral); outline-offset: -3px; }
+.case-number-link, .record-link { color: var(--accent-primary,coral); text-decoration: underline; }
+.case-metadata { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin:24px 0; }
+.case-metadata dt { color:var(--text-secondary,#aaa); } .case-metadata dd { margin:4px 0; overflow-wrap:anywhere; }
+.evidence-records { margin:20px 0; } .evidence-records td { vertical-align:top; white-space:normal; overflow-wrap:anywhere; }
+.evidence-trigger { background:rgba(246,143,98,.15); border-left:3px solid var(--accent-primary,coral); padding:2px 5px; color:inherit; }
+.evidence-records dl { display:grid; grid-template-columns:minmax(120px,1fr) 2fr; gap:6px 16px; margin:0; }
+.evidence-records dd { margin:0; } .evidence-records dt { font-weight:600; }
+.evidence-records summary, .related-records summary { cursor:pointer; padding:12px 0; }
+
+.master-checks h2 { margin:24px 0 16px; font-size:1.4rem; }
+.master-checks p { margin:12px 0; line-height:1.6; }
+.master-checks .check-actions { display:flex; gap:18px; align-items:center; flex-wrap:wrap; margin:20px 0; }
+.master-checks aside { margin-top:24px; padding:24px; }

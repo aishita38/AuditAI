@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { ArrowLeft, Check, X, Shield, Clock, FileText, ClipboardList, Info } from 'lucide-react';
-import { claimsApi, casesApi, reportsApi } from '../api/client';
+import { ArrowLeft, Shield, Clock, FileText, ClipboardList, Info } from 'lucide-react';
+import { claimsApi, casesApi, reportsApi, reviewQueueApi } from '../api/client';
 import ScoreGauge from '../components/ScoreGauge';
 import ShapChart from '../components/ShapChart';
 import ReviewEvidence from '../components/ReviewEvidence';
+import PolicyEvidence from '../components/PolicyEvidence';
 import LoadingSkeleton from '../components/LoadingSkeleton';
 import { useAuth } from '../auth/AuthContext';
 
@@ -21,12 +22,12 @@ export default function ClaimDetail() {
 
   // Case Action Fields
   const [role, setRole] = useState('maker');
-  const [notes, setNotes] = useState('');
   const [submittingAction, setSubmittingAction] = useState(false);
   const [generatingReport, setGeneratingReport] = useState(false);
   const [reportError, setReportError] = useState('');
 
   const fetchDetail = async () => {
+    setLoading(true);setData(null);
     try {
       const response = await claimsApi.getDetail(id);
       setData(response.data);
@@ -50,26 +51,11 @@ export default function ClaimDetail() {
     if (reviewerRoles.length && !reviewerRoles.includes(role)) setRole(reviewerRoles[0]);
   }, [user, role]);
 
-  const handleCaseAction = async (actionType) => {
-    if (!notes || notes.length < 5) {
-      alert("Please provide explanatory notes (minimum 5 characters).");
-      return;
-    }
+  const openSharedReview = async () => {
     setSubmittingAction(true);
-    try {
-      if (role === 'maker') {
-        await casesApi.makerRecommend(id, actionType, notes);
-      } else {
-        await casesApi.checkerSignoff(id, actionType, notes);
-      }
-      setNotes('');
-      await fetchDetail(); // refresh data & timeline
-    } catch (error) {
-      console.error("Case action failed:", error);
-      alert(error.response?.data?.detail || "Action failed.");
-    } finally {
-      setSubmittingAction(false);
-    }
+    try { const item=(await reviewQueueApi.expense(id)).data; navigate(`/review/cases/${item.id}`); }
+    catch(error) { alert(error.response?.data?.detail || 'Could not open the shared review case.'); }
+    finally { setSubmittingAction(false); }
   };
 
   const handleGenerateReport = async () => {
@@ -96,7 +82,7 @@ export default function ClaimDetail() {
   if (!data) {
     return (
       <div className="main-content text-center py-20">
-        <h2 className="text-2xl mb-4">Claim Not Found</h2>
+        <h2 className="text-2xl mb-4">Claim not found</h2>
         <button className="btn btn-secondary" onClick={() => navigate(claimsReturnTo)}>Back to Claims</button>
       </div>
     );
@@ -104,21 +90,20 @@ export default function ClaimDetail() {
 
   const { claim, ocr_result, prediction, audit_report, review_permissions, case_review } = data;
   const reviewBlockReason = role === 'checker' ? review_permissions?.checker_block_reason : review_permissions?.maker_block_reason;
-  const canReview = reviewerRoles.includes(role) && !reviewBlockReason;
   const anomalyScore = prediction?.combined_fraud_score !== null && prediction?.combined_fraud_score !== undefined
     ? Math.round(prediction.combined_fraud_score * 100)
     : null;
-  const scoreInterpretation = anomalyScore === null
-    ? 'Waiting for a model score'
-    : Number(prediction?.feature_values?._holiday_policy_flag || 0) >= 0.5 && anomalyScore < 50
-      ? 'Holiday policy review required — the model score is below its review band'
-    : anomalyScore >= 65
-      ? 'High anomaly signal — investigate the evidence below'
-      : anomalyScore >= 50
-        ? 'Review recommended — the claim crossed the review threshold'
-      : 'Lower anomaly signal — no automatic review flag';
+  const modelEnabled = prediction?.feature_values?._model_enabled !== false;
+  const modelThreshold = Number(prediction?.feature_values?._model_threshold ?? 0.5);
+  const scoreInterpretation = !modelEnabled
+    ? 'Expense ML is disabled for enterprise records. Policy and dedicated rules determine review.'
+    : anomalyScore === null ? 'Waiting for a model score'
+    : prediction.combined_fraud_score >= modelThreshold
+      ? 'Model review recommended at the validation-selected cutoff'
+      : prediction.is_flagged ? 'Policy review required; model score is below its cutoff'
+      : 'Model score is below its validation-selected cutoff';
   const holidayPolicyFlag = Number(prediction?.feature_values?._holiday_policy_flag || 0) >= 0.5;
-  const noReviewNeeded = claim.status === 'scored' && !prediction?.is_flagged && !holidayPolicyFlag;
+  const noReviewNeeded = claim.status === 'scored' && !prediction?.is_flagged && !holidayPolicyFlag && !data.policy?.requires_review;
   const timeKnown = Number(prediction?.feature_values?._event_time_known || 0) >= 0.5;
   const visibleShapValues = timeKnown ? prediction?.shap_values : Object.fromEntries(
     Object.entries(prediction?.shap_values || {}).filter(([feature]) => !['hour', 'is_after_hours'].includes(feature))
@@ -282,9 +267,7 @@ export default function ClaimDetail() {
                   </div>
                 </div>
                 <div className="risk-thresholds">
-                  <span><b>0–49</b> lower signal</span>
-                  <span><b>50–64</b> review</span>
-                  <span><b>65–100</b> high anomaly signal</span>
+                  {modelEnabled?<span>Validation-selected model cutoff: <b>{(modelThreshold*100).toFixed(2)}/100</b>. Policy rules can also require review.</span>:<span>Historical expense-model score is inactive for this enterprise record.</span>}
                 </div>
               </div>
             </>
@@ -292,6 +275,7 @@ export default function ClaimDetail() {
         </div>
       </div>
 
+      <section className="glass-card mb-6"><h2 className="text-xl font-semibold mb-4">Company policy evidence</h2><PolicyEvidence result={data.policy} /></section>
       {/* SHAP explainability */}
       <div className="grid-cols-3 mb-6">
         <div className="col-span-2 h-[380px]" style={{ gridColumn: 'span 2' }}>
@@ -334,35 +318,9 @@ export default function ClaimDetail() {
               ? <p className="review-block-message" role="status">This claim was scored below the review threshold. No maker-checker case is needed.</p>
               : reviewBlockReason && <p className="review-block-message" role="status">{reviewBlockReason}</p>}
 
-            {canReview && <div className="mb-4">
-              <label className="text-xs text-secondary mb-1 block">Reviewer Notes / Justification</label>
-              <textarea
-                className="input text-xs"
-                rows="4"
-                placeholder={`Provide audit commentary justifying your decision...`}
-                value={notes}
-                onChange={e => setNotes(e.target.value)}
-                style={{ resize: 'none' }}
-              />
-            </div>}
+            {!noReviewNeeded && user?.roles?.some(r=>['maker','checker','admin'].includes(r)) && <button className="btn btn-primary" onClick={openSharedReview} disabled={submittingAction}>Open shared review case</button>}
+            <p className="text-secondary">Review actions and comments are handled in the shared review queue.</p>
           </div>
-
-          {canReview && <div className="flex gap-2">
-            <button
-              className="btn btn-success flex-1 py-2 text-xs"
-              onClick={() => handleCaseAction('approve')}
-              disabled={submittingAction}
-            >
-              <Check size={14} /> {role === 'maker' ? 'Recommend Approve' : 'Approve'}
-            </button>
-            <button
-              className="btn btn-danger flex-1 py-2 text-xs"
-              onClick={() => handleCaseAction('reject')}
-              disabled={submittingAction}
-            >
-              <X size={14} /> {role === 'maker' ? 'Recommend Reject' : 'Reject'}
-            </button>
-          </div>}
         </div>
       </div>
 

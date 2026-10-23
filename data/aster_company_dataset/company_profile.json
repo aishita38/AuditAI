@@ -1,0 +1,21 @@
+{
+  "company_name": "Aster Precision Components Private Limited (fictional)",
+  "industry": "Manufacturing and industrial components",
+  "currency": "INR",
+  "timezone": "Asia/Kolkata",
+  "period": "2024-04-01 through 2026-03-31",
+  "offices": [
+    "Pune",
+    "Chennai",
+    "Bengaluru"
+  ],
+  "manager_limit": 50000,
+  "senior_manager_limit": 250000,
+  "new_vendor_window_days": 7,
+  "new_vendor_large_payment": 2000000,
+  "cash_review_limit": 10000,
+  "expense_review_limit": 50000,
+  "working_hours": "09:00-18:00 Monday-Friday",
+  "source": "User supplied scenario taxonomy; all thresholds are fictional demo company policy, not statutory requirements",
+  "seed": 42
+}

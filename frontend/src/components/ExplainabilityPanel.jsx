@@ -96,7 +96,7 @@ export default function ExplainabilityPanel({ claims = [], reasonBreakdown = [],
                   tick={{ fontSize: 11 }}
                 />
                 <ZAxis type="number" dataKey="size" range={[65, 260]} />
-                <ReferenceLine y={threshold} stroke="var(--accent-primary)" strokeDasharray="5 5" label={{ value: 'Review threshold', fill: 'var(--text-secondary)', fontSize: 11 }} />
+                {threshold != null && <ReferenceLine y={threshold} stroke="var(--accent-primary)" strokeDasharray="5 5" label={{ value: 'Review threshold', fill: 'var(--text-secondary)', fontSize: 11 }} />}
                 <Tooltip content={<DetectionTooltip />} cursor={{ strokeDasharray: '3 3' }} />
                 <Scatter
                   name="Flagged claims"

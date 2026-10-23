@@ -1,0 +1,2 @@
+export const TYPES={expense_claim:'Expense claim',circular_payment:'Circular payment',reconciliation:'Reconciliation',vendor_check:'Vendor check',payroll_check:'Payroll check'};
+export const STATES={open:'Awaiting maker',maker_recommended_approve:'Awaiting checker - recommend approve',maker_recommended_reject:'Awaiting checker - recommend reject',closed_approved:'Closed - approved / explained',closed_rejected:'Closed - rejected / unresolved',cancelled_unflagged:'Cancelled - no longer flagged'};

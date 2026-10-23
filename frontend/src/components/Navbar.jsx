@@ -11,7 +11,7 @@ export default function Navbar() {
     <nav className="navbar glass-card">
       <div className="navbar-content">
         <div className="navbar-brand">
-          <ShieldCheck className="brand-icon" size={28} />
+          <img className="brand-logo" src="/auditai-logo.png" alt="AuditAI mascot" />
           <span className="brand-text">AuditAI</span>
         </div>
 
@@ -35,6 +35,7 @@ export default function Navbar() {
             <Activity size={18} />
             <span>Audit Screens</span>
           </NavLink>}
+          {reviewer && <NavLink to="/review-queue" aria-label="Review Queue" title="Review Queue" className={({isActive})=>isActive?'nav-link active':'nav-link'}><ShieldCheck size={18}/><span>Review Queue</span></NavLink>}
           <div className="navbar-user"><strong>{user?.display_name}</strong><small>{user?.roles?.filter(role => role !== 'employee').join(' · ') || 'employee'}</small></div>
           <button className="nav-link navbar-signout" onClick={logout} title="Sign out"><LogOut size={17} /><span>Sign out</span></button>
         </div>

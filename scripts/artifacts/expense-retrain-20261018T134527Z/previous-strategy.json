@@ -1,0 +1,5 @@
+{
+  "aster": {"threshold": 0.4350802143888842, "basis": "Current-model validation selected; retrospective synthetic Aster split, minimum precision 95%. Superseded when retraining activates a newly calibrated model."},
+  "original": {"threshold": 0.5, "basis": "Awaiting validation calibration"},
+  "enterprise": {"model_enabled": false, "basis": "Policy and dedicated rule checks; expense ML is out of scope"}
+}

@@ -31,7 +31,14 @@ export function AuthProvider({ children }) {
     setUser(null);
   };
 
-  return <AuthContext.Provider value={{ user, loading, login, logout }}>{children}</AuthContext.Provider>;
+  const developerLogin = async (challenge, otp) => {
+    const response=await authApi.devVerify(challenge,otp);
+    sessionStorage.setItem(authApi.tokenKey,response.data.access_token);
+    setUser(response.data.user);
+    return response.data.user;
+  };
+
+  return <AuthContext.Provider value={{ user, loading, login, developerLogin, logout }}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {

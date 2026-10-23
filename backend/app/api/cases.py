@@ -118,6 +118,8 @@ def checker_signoff(
     if not case:
         raise HTTPException(404, f"Case for claim {claim_id} not found.")
 
+    from backend.app.policy_service import run_checks
+    run_checks(db,True)
     assert_can_review(db, user, case.claim, "checker")
 
     new_status = "closed_approved" if action == "approve" else "closed_rejected"

@@ -24,8 +24,40 @@ api.interceptors.response.use((response) => response, (error) => {
 export const authApi = {
   tokenKey: TOKEN_KEY,
   login: (email, password) => api.post('/auth/login', { email, password }),
+  devStatus: () => api.get('/auth/dev-otp/status'),
+  devGenerate: (email) => api.post('/auth/dev-otp/generate', { email }),
+  devVerify: (challenge_id, otp) => api.post('/auth/dev-otp/verify', { challenge_id, otp }),
   me: () => api.get('/auth/me'),
   logout: () => api.post('/auth/logout'),
+};
+
+export const transfersApi = {
+  cycles: (params) => api.get('/transfers/cycles', { params }),
+  reconciliation: () => api.get('/transfers/reconciliation'),
+  reviews: () => api.get('/transfer-reviews'),
+  sendToReview: (body) => api.post('/transfer-reviews', body),
+  decide: (id, stage, body) => api.post(`/transfer-reviews/${id}/${stage}`, body),
+  upload: (formData) => api.post('/transfers/upload', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  }),
+};
+
+export const policiesApi = {
+  list: (params) => api.get('/policies', { params }),
+  run: () => api.post('/policies/run'),
+  reviewers: () => api.get('/policies/reviewers'),
+  authority: (id, limit) => api.put(`/policies/authorities/${id}`, { limit }),
+  inputs: (id, body) => api.put(`/policies/claims/${encodeURIComponent(id)}`, body),
+};
+
+export const reviewQueueApi = {
+  sync: () => api.post('/review-queue/sync'),
+  list: (params) => api.get('/review-queue', { params }),
+  detail: (id) => api.get(`/review-queue/${id}`),
+  decide: (id, stage, body) => api.post(`/review-queue/${id}/${stage}`, body),
+  comment: (id, notes) => api.post(`/review-queue/${id}/comments`, { notes }),
+  reconcile: (claimId) => api.post(`/review-queue/reconciliation/${encodeURIComponent(claimId)}`),
+  expense: (claimId) => api.post(`/review-queue/expense/${encodeURIComponent(claimId)}`),
 };
 
 export const claimsApi = {
@@ -64,10 +96,22 @@ export const casesApi = {
 };
 
 export const analyticsApi = {
-  benford: () => api.get('/analytics/benford'),
-  relatedParties: () => api.get('/analytics/related-parties'),
-  sodViolations: () => api.get('/analytics/sod-violations'),
+  benford: () => api.get('/analytics/benford', { timeout: 20000 }),
+  relatedParties: () => api.get('/analytics/related-parties', { timeout: 20000 }),
+  sodViolations: () => api.get('/analytics/sod-violations', { timeout: 20000 }),
   caseMetrics: () => api.get('/analytics/case-metrics'),
 };
 
 export default api;
+
+export const recordsApi = { lookup: (records) => api.post('/review-records/lookup', { records }), detail: (kind, id) => api.get(`/review-records/${kind}/${encodeURIComponent(id)}`) };
+
+export const masterDataApi = {
+  status: () => api.get('/master-data/status'),
+  upload: (dataset, file) => {const body=new FormData();body.append('file',file);return api.post(`/master-data/${dataset}/import`,body,{headers:{'Content-Type':'multipart/form-data'}});},
+  run: (dataset) => api.post(`/master-checks/${dataset}/run`),
+  findings: (dataset) => api.get(`/master-checks/${dataset}`),
+  send: (id) => api.post(`/master-checks/findings/${id}/send-to-review`),
+};
+
+export const detectionApi={ overview:()=>api.get('/detection/overview'), recheck:()=>api.post('/detection/recheck') };

@@ -1,0 +1,119 @@
+[
+  {
+    "rule_id": "VENDOR_SHARED_BANK",
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "scope": "Imported-schema synthetic records"
+  },
+  {
+    "rule_id": "VENDOR_SHARED_ADDRESS",
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "scope": "Imported-schema synthetic records"
+  },
+  {
+    "rule_id": "VENDOR_SHARED_PHONE",
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "scope": "Imported-schema synthetic records"
+  },
+  {
+    "rule_id": "VENDOR_SHELL_NETWORK",
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "scope": "Imported-schema synthetic records"
+  },
+  {
+    "rule_id": "VENDOR_INVALID_TAX_ID",
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "scope": "Imported-schema synthetic records"
+  },
+  {
+    "rule_id": "VENDOR_NEW_LARGE_PAYMENT",
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "scope": "Fixture-only vendor-linked transactions"
+  },
+  {
+    "rule_id": "PAYROLL_GHOST_EMPLOYEE",
+    "tp": 4,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "scope": "Imported-schema synthetic records"
+  },
+  {
+    "rule_id": "PAYROLL_AFTER_EXIT",
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "scope": "Imported-schema synthetic records"
+  },
+  {
+    "rule_id": "PAYROLL_BEFORE_JOIN",
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "scope": "Imported-schema synthetic records"
+  },
+  {
+    "rule_id": "PAYROLL_DUPLICATE_PAYEE",
+    "tp": 3,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "scope": "Imported-schema synthetic records"
+  },
+  {
+    "rule_id": "PAYROLL_SALARY_MISMATCH",
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "scope": "Imported-schema synthetic records"
+  },
+  {
+    "rule_id": "PAYROLL_DUPLICATE_PAYMENT",
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "scope": "Imported-schema synthetic records"
+  },
+  {
+    "rule_id": "PAYROLL_BANK_MISMATCH",
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "scope": "Imported-schema synthetic records"
+  }
+]

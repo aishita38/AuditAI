@@ -7,7 +7,7 @@ from collections import Counter
 from typing import Dict, List
 
 from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
+from sqlalchemy.orm import Session, lazyload, joinedload, selectinload
 
 from backend.app.db import get_db
 from backend.app.models.expense import Case, CaseAuditTrail, ExpenseClaim
@@ -22,9 +22,9 @@ def get_benford_law_distribution(db: Session = Depends(get_db)):
     Computes the actual frequency of first digits of all claim amounts
     versus the logarithmic expectation of Benford's Law.
     """
-    claims = db.query(ExpenseClaim).all()
+    claims = db.query(ExpenseClaim.claimed_amount).all()
     if not claims:
-        return {"digits": [], "actual": [], "expected": []}
+        return []
 
     # Extract first digit of amounts
     digits = []
@@ -62,7 +62,7 @@ def screen_related_parties(db: Session = Depends(get_db)):
     Heuristic: Checks if the vendor name contains parts of the employee's name/surname
     (excluding generic words like 'local', 'taxi', etc.).
     """
-    claims = db.query(ExpenseClaim).all()
+    claims = db.query(ExpenseClaim).options(lazyload("*"), joinedload(ExpenseClaim.prediction)).all()
     flagged = []
 
     stop_words = {"the", "and", "a", "an", "mr", "mrs", "dr", "inc", "co", "corp", "ltd", "pvt"}
@@ -82,6 +82,7 @@ def screen_related_parties(db: Session = Depends(get_db)):
             score = c.prediction.combined_fraud_score if c.prediction else 0.0
             flagged.append({
                 "claim_id": c.claim_id,
+                "claim_exists": True,
                 "employee_name": c.employee_name,
                 "vendor_name": c.vendor_name,
                 "claimed_amount": float(c.claimed_amount),
@@ -103,16 +104,19 @@ def screen_sod_violations(db: Session = Depends(get_db)):
     - Employee == Maker (submitting claims and also investigating/recommending them).
     - Employee == Checker (submitting claims and also performing final approval).
     """
-    cases = db.query(Case).all()
+    cases = db.query(Case).options(selectinload(Case.claim).lazyload("*")).all()
     violations = []
 
     for c in cases:
         claim = c.claim
+        if claim is None:
+            continue
         
         # Check Maker == Checker
         if c.maker_id and c.checker_id and c.maker_id == c.checker_id:
             violations.append({
                 "claim_id": c.claim_id,
+                "claim_exists": True,
                 "employee_name": claim.employee_name,
                 "type": "Maker and Checker are the same user",
                 "user_involved": c.maker_id,
@@ -124,6 +128,7 @@ def screen_sod_violations(db: Session = Depends(get_db)):
         if c.maker_id and (c.maker_id.lower() in claim.employee_name.lower() or c.maker_id == claim.employee_id):
             violations.append({
                 "claim_id": c.claim_id,
+                "claim_exists": True,
                 "employee_name": claim.employee_name,
                 "type": "Claimant is Maker",
                 "user_involved": c.maker_id,
@@ -134,6 +139,7 @@ def screen_sod_violations(db: Session = Depends(get_db)):
         if c.checker_id and (c.checker_id.lower() in claim.employee_name.lower() or c.checker_id == claim.employee_id):
             violations.append({
                 "claim_id": c.claim_id,
+                "claim_exists": True,
                 "employee_name": claim.employee_name,
                 "type": "Claimant is Checker",
                 "user_involved": c.checker_id,

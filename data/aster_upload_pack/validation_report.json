@@ -1,0 +1,46 @@
+{
+  "01_aster_vendor_master.csv": {
+    "import_id": 1,
+    "dataset": "vendor-master",
+    "status": "completed",
+    "inserted": 39,
+    "updated": 0,
+    "skipped": 0,
+    "rejected": 0,
+    "errors": []
+  },
+  "02_aster_employee_roster.csv": {
+    "import_id": 2,
+    "dataset": "employee-roster",
+    "status": "completed",
+    "inserted": 37,
+    "updated": 0,
+    "skipped": 0,
+    "rejected": 0,
+    "errors": []
+  },
+  "03_aster_payroll_payments.csv": {
+    "import_id": 3,
+    "dataset": "payroll-payments",
+    "status": "completed",
+    "inserted": 40,
+    "updated": 0,
+    "skipped": 0,
+    "rejected": 0,
+    "errors": []
+  },
+  "04_aster_expense_claims.csv": {
+    "status": "success",
+    "message": "Loaded 15 claims.",
+    "processed_count": 15,
+    "error_count": 0,
+    "errors": []
+  },
+  "05_aster_bank_transfers.csv": {
+    "imported": 10,
+    "skipped": 0
+  },
+  "vendor_findings": 10,
+  "payroll_findings": 14,
+  "ground_truth_matches": true
+}

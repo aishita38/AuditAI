@@ -109,7 +109,9 @@ def test_login_visibility_and_separation_of_duties():
         assert upload.status_code == 200, upload.text
         with session_factory() as db:
             db.query(ExpenseClaim).filter(ExpenseClaim.claim_id == "CLM-UP").one().status = "flagged"
-            db.add(Case(claim_id="CLM-UP", status="open"))
+            # Import policy checks may already have opened a case (e.g. missing description).
+            if not db.query(Case).filter_by(claim_id="CLM-UP").first():
+                db.add(Case(claim_id="CLM-UP", status="open"))
             db.commit()
         assert client.get("/api/v1/claims/CLM-UP", headers=maker).status_code == 200
         assert client.post("/api/v1/cases/CLM-UP/maker-recommend", params={"action": "approve", "notes": "I uploaded it"}, headers=maker).status_code == 403

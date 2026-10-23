@@ -8,6 +8,9 @@ import ClaimsTable from './pages/ClaimsTable';
 import ClaimDetail from './pages/ClaimDetail';
 import AuditScreens from './pages/AuditScreens';
 import Login from './pages/Login';
+import ReviewQueue from './pages/ReviewQueue';
+import CaseDetail from './pages/CaseDetail';
+import RecordDetail from './pages/RecordDetail';
 
 function ProtectedLayout() {
   const { user, loading } = useAuth();
@@ -34,6 +37,10 @@ export default function App() {
           <Route path="/claims" element={<ClaimsTable />} />
           <Route path="/claims/:id" element={<ClaimDetail />} />
           <Route path="/audit-screens" element={<ReviewerOnly><AuditScreens /></ReviewerOnly>} />
+          <Route path="/review/cases/:caseId" element={<ReviewerOnly><CaseDetail /></ReviewerOnly>} />
+          <Route path="/records/:kind/:recordId" element={<ReviewerOnly><RecordDetail /></ReviewerOnly>} />
+          <Route path="/review-queue" element={<ReviewerOnly><ReviewQueue /></ReviewerOnly>} />
+          <Route path="/circular-payments" element={<Navigate to="/audit-screens?tab=circular" replace />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

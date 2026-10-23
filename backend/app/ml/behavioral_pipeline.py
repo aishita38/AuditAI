@@ -5,6 +5,8 @@ They are anomaly rankings, not fraud probabilities. Only trusted normal rows
 train the models; labels are never inputs. Legacy bundles are not compatible.
 """
 import copy
+import hashlib
+import json
 import os
 from pathlib import Path
 import uuid
@@ -124,7 +126,7 @@ def score_claims(feature_matrix, pipeline_artifacts, config=None):
                  is_flagged=bool(raw[i] >= a['threshold'])) for i in range(len(x))]
 
 
-def train_pipeline(feature_matrix, feature_names, config, *, labels=None, timestamps=None):
+def train_pipeline(feature_matrix, feature_names, config, *, labels=None, timestamps=None, split_roles=None):
     """Chronological 60/15/10/15 train/stop/calibration/test partitions.
 
     Labels: 0=reviewed normal, 1=known anomaly, -1=unknown. Callers must explicitly
@@ -140,9 +142,15 @@ def train_pipeline(feature_matrix, feature_names, config, *, labels=None, timest
     if not np.isin(y, [-1, 0, 1]).all() or not np.isfinite(x).all():
         raise ValueError('Invalid labels or non-finite feature values.')
     times = np.asarray(timestamps)
-    order = np.argsort(times, kind='stable')
+    if split_roles is not None:
+        roles = np.asarray(split_roles)
+        if len(roles) != len(x) or set(roles) != {0, 1, 2, 3}:
+            raise ValueError('Explicit split roles must contain all four aligned partitions')
+        order = np.lexsort((times, roles))
+    else:
+        order = np.argsort(times, kind='stable')
     x, y, times = x[order], y[order], times[order]
-    cuts = [int(np.searchsorted(times, times[int(len(x)*q)], side='left')) for q in [.6, .75, .85]]
+    cuts = [int(sum(roles < k)) for k in (1, 2, 3)] if split_roles is not None else [int(np.searchsorted(times, times[int(len(x)*q)], side='left')) for q in [.6, .75, .85]]
     c1, c2, c3 = cuts
     if not 0 < c1 < c2 < c3 < len(x):
         raise ValueError('Need distinct time periods for training, validation, calibration and test.')
@@ -213,10 +221,41 @@ def train_pipeline(feature_matrix, feature_names, config, *, labels=None, timest
     return a
 
 
-def train_claims(claims, labels, config):
-    features, names = compute_features_batch(claims)
-    return train_pipeline([[f[n] for n in names] for f in features], names, config,
-                          labels=labels, timestamps=[event_time(c).value for c in claims])
+def train_claims(claims, labels, config, *, split_roles=None):
+    ids = [str(c.get('claim_id', c.get('transaction_id', i))) for i,c in enumerate(claims)]
+    if len(ids) != len(set(ids)):
+        raise ValueError('Training claim IDs must be unique across all partitions')
+    if split_roles is None:
+        features, names = compute_features_batch(claims)
+    else:
+        # Each evaluation partition sees the frozen train ledger and itself,
+        # never the inputs from another held-out partition. Labels are not features.
+        features = [None] * len(claims)
+        for role in (0, 1, 2, 3):
+            indexes = [i for i,r in enumerate(split_roles) if r in (0, role)]
+            values, names = compute_features_batch([claims[i] for i in indexes])
+            for i,f in zip(indexes, values):
+                if split_roles[i] == role:
+                    features[i] = f
+    times = np.asarray([event_time(c).value for c in claims])
+    artifacts = train_pipeline([[f[n] for n in names] for f in features], names, config,
+                              labels=labels, timestamps=times, split_roles=split_roles)
+    order = np.lexsort((times, np.asarray(split_roles))) if split_roles is not None else np.argsort(times, kind='stable')
+    metadata = artifacts['metadata']
+    cuts = np.cumsum([0, metadata['train_rows'], metadata['stop_rows'],
+                      metadata['calibration_rows'], metadata['test_rows']])
+    manifest = {}
+    for role, lo, hi in zip(('train', 'selection_validation', 'cutoff_validation', 'test'), cuts[:-1], cuts[1:]):
+        manifest[role] = [str(claims[i].get('claim_id', claims[i].get('transaction_id', i))) for i in order[lo:hi]]
+    ids = sum(manifest.values(), [])
+    if len(set(ids)) != len(ids):
+        raise ValueError('Training claim IDs must be unique across all partitions')
+    metadata['split_manifest'] = manifest
+    metadata['input_sha256'] = hashlib.sha256(json.dumps(claims, default=str, sort_keys=True).encode()).hexdigest()
+    metadata['run_id'] = uuid.uuid4().hex
+    metadata['evaluation_scope'] = ('Fixed stratified vendor-group synthetic split' if split_roles is not None else 'Chronological synthetic split') + '; train-only fitting; validation selects model and threshold; test excluded from both. Previously inspected source data is not a fresh external benchmark.'
+    save_pipeline(artifacts, config)
+    return artifacts
 
 
 def save_pipeline(a, config):

@@ -1,0 +1,16 @@
+claim_id,employee_id,employee_name,claimed_amount,vendor_name,claimed_date,submitted_at,category,description,ocr_amount,ocr_vendor,is_fraud,fraud_type
+AST-DEMO-CLM-001,EMP001,Aster Employee 001,4500,Aster Test Supplier 001,2025-02-28,2025-02-28T11:00:00.000Z,Office supplies,Aster synthetic operational purchase,4500,Aster Test Supplier 001,false,none
+AST-DEMO-CLM-002,EMP002,Aster Employee 002,45000,Aster Test Supplier 002,2025-02-28,2025-02-28T11:00:00.000Z,Office supplies,Aster synthetic operational purchase,4500,Aster Test Supplier 002,true,receipt_mismatch
+AST-DEMO-CLM-003,EMP003,Aster Employee 003,6000,Aster Test Supplier 003,2025-02-28,2025-02-28T11:00:00.000Z,Office supplies,Aster synthetic operational purchase,6000,Aster Test Supplier 003,false,none
+AST-DEMO-CLM-004,EMP004,Aster Employee 004,1800,Aster Test Supplier 004,2025-02-28,2025-02-28T11:00:00.000Z,Office supplies,Aster synthetic operational purchase,1800,Aster Test Supplier 004,false,none
+AST-DEMO-CLM-005,EMP005,Aster Employee 005,1900,Aster Test Supplier 005,2025-02-28,2025-02-28T11:00:00.000Z,Office supplies,Aster synthetic operational purchase,1900,Aster Test Supplier 005,false,none
+AST-DEMO-CLM-006,EMP006,Aster Employee 006,2000,Aster Test Supplier 006,2025-02-28,2025-02-28T11:00:00.000Z,Office supplies,Aster synthetic operational purchase,2000,Aster Test Supplier 006,false,none
+AST-DEMO-CLM-007,EMP007,Aster Employee 007,2100,Aster Test Supplier 007,2025-02-28,2025-02-28T11:00:00.000Z,Office supplies,Aster synthetic operational purchase,2100,Aster Test Supplier 007,false,none
+AST-DEMO-CLM-008,EMP008,Aster Employee 008,2200,Aster Test Supplier 008,2025-02-28,2025-02-28T11:00:00.000Z,Office supplies,Aster synthetic operational purchase,2200,Aster Test Supplier 008,false,none
+AST-DEMO-CLM-009,EMP009,Aster Employee 009,2300,Aster Test Supplier 009,2025-02-28,2025-02-28T11:00:00.000Z,Office supplies,Aster synthetic operational purchase,2300,Aster Test Supplier 009,false,none
+AST-DEMO-CLM-010,EMP010,Aster Employee 010,2400,Aster Test Supplier 010,2025-02-28,2025-02-28T11:00:00.000Z,Office supplies,Aster synthetic operational purchase,2400,Aster Test Supplier 010,false,none
+AST-DEMO-CLM-011,EMP011,Aster Employee 011,2500,Aster Test Supplier 011,2025-02-28,2025-02-28T11:00:00.000Z,Office supplies,Aster synthetic operational purchase,2500,Aster Test Supplier 011,false,none
+AST-DEMO-CLM-012,EMP012,Aster Employee 012,2600,Aster Test Supplier 012,2025-02-28,2025-02-28T11:00:00.000Z,Office supplies,Aster synthetic operational purchase,2600,Aster Test Supplier 012,false,none
+AST-DEMO-CLM-013,EMP013,Aster Employee 013,2700,Aster Test Supplier 013,2025-02-28,2025-02-28T11:00:00.000Z,Office supplies,Aster synthetic operational purchase,2700,Aster Test Supplier 013,false,none
+AST-DEMO-CLM-014,EMP014,Aster Employee 014,2800,Aster Test Supplier 014,2025-02-28,2025-02-28T11:00:00.000Z,Office supplies,Aster synthetic operational purchase,2800,Aster Test Supplier 014,false,none
+AST-DEMO-CLM-015,EMP015,Aster Employee 015,2900,Aster Test Supplier 015,2025-02-28,2025-02-28T11:00:00.000Z,Office supplies,Aster synthetic operational purchase,2900,Aster Test Supplier 015,false,none

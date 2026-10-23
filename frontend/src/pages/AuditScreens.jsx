@@ -3,45 +3,42 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 import { ShieldAlert, Users, Percent, UserCheck } from 'lucide-react';
 import { analyticsApi } from '../api/client';
 import ScoreBadge from '../components/ScoreBadge';
+import RecordLink from '../components/RecordLink';
+import { useSearchParams } from 'react-router-dom';
+import CircularPayments from './CircularPayments';
+import PaymentReconciliation from './PaymentReconciliation';
+import PolicyChecks from './PolicyChecks';
+import MasterChecks from './MasterChecks';
 
 export default function AuditScreens() {
-  const [activeTab, setActiveTab] = useState('benford');
+  const [params, setParams] = useSearchParams();
+  const activeTab = params.get('tab') || 'benford';
+  const setActiveTab = tab => setParams({ tab });
   const [benfordData, setBenfordData] = useState([]);
   const [relatedParties, setRelatedParties] = useState([]);
   const [sodViolations, setSodViolations] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const [error, setError] = useState('');
+  const [retry, setRetry] = useState(0);
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const benfordRes = await analyticsApi.benford();
-        setBenfordData(benfordRes.data);
-
-        const rpRes = await analyticsApi.relatedParties();
-        setRelatedParties(rpRes.data);
-
-        const sodRes = await analyticsApi.sodViolations();
-        setSodViolations(sodRes.data);
-      } catch (error) {
-        console.error("Failed to load audit analytics:", error);
-      } finally {
-        setLoading(false);
-      }
+    const loaders = {
+      benford: [analyticsApi.benford, setBenfordData],
+      related: [analyticsApi.relatedParties, setRelatedParties],
+      sod: [analyticsApi.sodViolations, setSodViolations],
     };
-    fetchData();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="main-content">
-        <div className="glass-card py-20 text-center">
-          <div className="spinner mx-auto mb-4"></div>
-          <h3 className="text-xl">Loading Audit Analytics...</h3>
-        </div>
-      </div>
-    );
-  }
+    const selected = loaders[activeTab];
+    if (!selected) return;
+    let active = true;
+    setLoading(true);
+    setError('');
+    selected[0]().then(response => {
+      if (active) selected[1](response.data);
+    }).catch(() => {
+      if (active) setError('This audit check could not load. Please retry.');
+    }).finally(() => { if (active) setLoading(false); });
+    return () => { active = false; };
+  }, [activeTab, retry]);
 
   return (
     <div className="main-content">
@@ -57,7 +54,7 @@ export default function AuditScreens() {
       </div>
 
       {/* Tabs Row */}
-      <div className="flex gap-2 mb-6 border-b border-glass pb-3">
+      <div className="flex gap-2 mb-6 border-b border-glass pb-3" style={{ flexWrap: 'wrap' }}>
         <button
           className={`btn ${activeTab === 'benford' ? 'btn-primary' : 'btn-secondary'} py-2 px-4 text-sm`}
           onClick={() => setActiveTab('benford')}
@@ -78,10 +75,21 @@ export default function AuditScreens() {
         >
           <UserCheck size={16} /> Segregation of Duties (SoD)
         </button>
+        <button className={`btn ${activeTab === 'circular' ? 'btn-primary' : 'btn-secondary'} py-2 px-4 text-sm`} onClick={() => setActiveTab('circular')}>Circular Payments</button>
+        <button className={`btn ${activeTab === 'reconciliation' ? 'btn-primary' : 'btn-secondary'} py-2 px-4 text-sm`} onClick={() => setActiveTab('reconciliation')}>Payment Reconciliation</button>
+        <button className={`btn ${activeTab === 'policies' ? 'btn-primary' : 'btn-secondary'} py-2 px-4 text-sm`} onClick={() => setActiveTab('policies')}>Company Policy</button>
+        <button className={`btn ${activeTab === 'vendor' ? 'btn-primary' : 'btn-secondary'}`} onClick={()=>setActiveTab('vendor')}>Vendor Master Checks</button>
+        <button className={`btn ${activeTab === 'payroll' ? 'btn-primary' : 'btn-secondary'}`} onClick={()=>setActiveTab('payroll')}>Payroll Checks</button>
       </div>
-
+      {activeTab === 'circular' && <CircularPayments />}
+      {activeTab === 'reconciliation' && <PaymentReconciliation />}
+      {activeTab === 'policies' && <PolicyChecks />}
+      {['benford', 'related', 'sod'].includes(activeTab) && loading && <div className="glass-card" role="status">Loading selected audit check...</div>}
+      {['benford', 'related', 'sod'].includes(activeTab) && error && <div className="glass-card" role="alert">{error} <button className="btn btn-secondary" onClick={() => setRetry(value => value + 1)}>Retry</button></div>}
+      {activeTab === 'vendor' && <MasterChecks dataset="vendor"/>}
+      {activeTab === 'payroll' && <MasterChecks dataset="payroll"/>}
       {/* Tab Contents */}
-      {activeTab === 'benford' && (
+      {activeTab === 'benford' && !loading && !error && (
         <div className="glass-card">
           <div className="mb-6">
             <h3 className="text-lg font-semibold flex items-center gap-2 mb-2">
@@ -110,7 +118,7 @@ export default function AuditScreens() {
         </div>
       )}
 
-      {activeTab === 'related' && (
+      {activeTab === 'related' && !loading && !error && (
         <div className="glass-card">
           <div className="mb-6">
             <h3 className="text-lg font-semibold flex items-center gap-2 mb-2">
@@ -140,7 +148,7 @@ export default function AuditScreens() {
                 <tbody>
                   {relatedParties.map((rp, idx) => (
                     <tr key={idx}>
-                      <td className="font-semibold text-accent-primary">{rp.claim_id}</td>
+                      <td className="font-semibold text-accent-primary"><RecordLink kind="claim" id={rp.claim_id} knownExists={rp.claim_exists}/></td>
                       <td>{rp.employee_name}</td>
                       <td>{rp.vendor_name}</td>
                       <td>₹{rp.claimed_amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</td>
@@ -159,7 +167,7 @@ export default function AuditScreens() {
         </div>
       )}
 
-      {activeTab === 'sod' && (
+      {activeTab === 'sod' && !loading && !error && (
         <div className="glass-card">
           <div className="mb-6">
             <h3 className="text-lg font-semibold flex items-center gap-2 mb-2">
@@ -188,7 +196,7 @@ export default function AuditScreens() {
                 <tbody>
                   {sodViolations.map((sod, idx) => (
                     <tr key={idx}>
-                      <td className="font-semibold text-accent-primary">{sod.claim_id}</td>
+                      <td className="font-semibold text-accent-primary"><RecordLink kind="claim" id={sod.claim_id} knownExists={sod.claim_exists}/></td>
                       <td>{sod.employee_name}</td>
                       <td>
                         <span className="badge badge-red text-xs">{sod.type}</span>

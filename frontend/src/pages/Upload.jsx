@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { claimsApi, fraudApi, receiptsApi } from '../api/client';
 import FileUpload from '../components/FileUpload';
+import MasterDataImport from '../components/MasterDataImport';
+import AutomaticCheckResult from '../components/AutomaticCheckResult';
 import { Play } from 'lucide-react';
 import { isReviewer, useAuth } from '../auth/AuthContext';
 
@@ -12,6 +14,7 @@ export default function Upload() {
   const [receiptData, setReceiptData] = useState(null);
   const [message, setMessage] = useState(null);
   const [scoring, setScoring] = useState(false);
+  const [automaticChecks,setAutomaticChecks]=useState(null);
 
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -24,7 +27,7 @@ export default function Upload() {
 
     try {
       const res = await claimsApi.upload(formData);
-      setCsvUploadState('complete');
+      setCsvUploadState('complete');setAutomaticChecks(res.data.checks);
       setMessage({ type: 'success', text: res.data.message });
     } catch (err) {
       console.error(err);
@@ -52,10 +55,11 @@ export default function Upload() {
       if (res.data.upload_status !== 'processed') {
         throw new Error('Receipt saved, but OCR could not read it. Try a clearer single-page image or PDF.');
       }
+      setAutomaticChecks(res.data.checks);
       const receiptResponse = await receiptsApi.get(res.data.receipt_id);
       setReceiptData(receiptResponse.data);
       setRcpUploadState('complete');
-      setMessage({ type: 'success', text: `Receipt processed: ${res.data.receipt_id}. OCR fields are shown below. Run scoring to include the receipt evidence.` });
+      setMessage({ type: 'success', text: `Receipt processed: ${res.data.receipt_id}. OCR fields are shown below. Relevant checks ran automatically. See the check status below.` });
     } catch (err) {
       console.error(err);
       setRcpUploadState('error');
@@ -94,6 +98,9 @@ export default function Upload() {
         <h1 className="text-2xl">Data Ingestion</h1>
       </div>
 
+      {isReviewer(user) && <MasterDataImport/>}
+      <AutomaticCheckResult checks={automaticChecks}/>
+
       {message && (
         <div className={`glass-card mb-6 flex items-center p-4 border-l-4 ${message.type === 'error' ? 'border-status-danger' :
             message.type === 'success' ? 'border-status-success' : 'border-accent-primary'
@@ -102,9 +109,10 @@ export default function Upload() {
         </div>
       )}
 
+      <details open={!user?.roles?.includes('admin')}><summary>Additional claim and receipt controls</summary>
       <div className="grid-cols-2 mb-6">
         <div className="glass-card">
-          <h3 className="text-lg font-semibold mb-2">1. Upload Expense Claims</h3>
+          <h3 id="expense-import" className="text-lg font-semibold mb-2">1. Upload Expense Claims</h3>
           <p className="text-secondary text-sm mb-6">Upload a CSV containing employee expense claim metadata.</p>
 
           <FileUpload
@@ -117,7 +125,7 @@ export default function Upload() {
         </div>
 
         <div className="glass-card">
-          <h3 className="text-lg font-semibold mb-2">2. Upload Receipt (Optional)</h3>
+          <h3 id="receipt-import" className="text-lg font-semibold mb-2">2. Upload Receipt (Optional)</h3>
           <p className="text-secondary text-sm mb-6">Attach a receipt image to an existing claim for OCR extraction.</p>
 
           <div className="mb-4">
@@ -164,12 +172,12 @@ export default function Upload() {
       {isReviewer(user) && (csvUploadState === 'complete' || rcpUploadState === 'complete') && (
         <div className="glass-card mb-6 flex items-center justify-between gap-5" style={{ padding: '18px 24px' }}>
           <div>
-            <h3 className="font-semibold">Ready to score the audit queue?</h3>
+            <h3 className="font-semibold">Checks run automatically after upload</h3>
             <p className="text-sm text-secondary mt-1">The pipeline will combine claim metadata, behavioral features, and any processed receipt evidence.</p>
           </div>
           <button className="btn btn-primary" onClick={runScoring} disabled={scoring}>
             <Play size={18} />
-            {scoring ? 'Scoring…' : 'Run Fraud Scoring Pipeline'}
+            {scoring ? 'Scoring…' : 'Retry pending claim scoring'}
           </button>
         </div>
       )}
@@ -198,6 +206,7 @@ export default function Upload() {
           </div>
         </div>
       </div>
+      </details>
     </div>
   );
 }

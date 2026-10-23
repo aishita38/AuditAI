@@ -1,0 +1,352 @@
+{
+  "scope": "Synthetic deterministic rule fixtures, not production fraud labels.",
+  "findings": [
+    {
+      "rule_id": "VENDOR_SHARED_BANK",
+      "involved_record_ids": {
+        "vendors": [
+          "AST-DEMO-V-VB1",
+          "AST-DEMO-V-VB2"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "VENDOR_SHELL_NETWORK",
+      "involved_record_ids": {
+        "vendors": [
+          "AST-DEMO-V-VB1",
+          "AST-DEMO-V-VB2"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "VENDOR_SHARED_ADDRESS",
+      "involved_record_ids": {
+        "vendors": [
+          "AST-DEMO-V-VA1",
+          "AST-DEMO-V-VA2"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "VENDOR_SHELL_NETWORK",
+      "involved_record_ids": {
+        "vendors": [
+          "AST-DEMO-V-VA1",
+          "AST-DEMO-V-VA2"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "VENDOR_SHARED_PHONE",
+      "involved_record_ids": {
+        "vendors": [
+          "AST-DEMO-V-VP1",
+          "AST-DEMO-V-VP2"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "VENDOR_SHELL_NETWORK",
+      "involved_record_ids": {
+        "vendors": [
+          "AST-DEMO-V-VP1",
+          "AST-DEMO-V-VP2"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "VENDOR_SHELL_NETWORK",
+      "involved_record_ids": {
+        "vendors": [
+          "AST-DEMO-V-VN1",
+          "AST-DEMO-V-VN2",
+          "AST-DEMO-V-VN3"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "VENDOR_INVALID_TAX_ID",
+      "involved_record_ids": {
+        "vendors": [
+          "AST-DEMO-V-BADPAN"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "VENDOR_INVALID_TAX_ID",
+      "involved_record_ids": {
+        "vendors": [
+          "AST-DEMO-V-BADGST"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "VENDOR_INVALID_TAX_ID",
+      "involved_record_ids": {
+        "vendors": [
+          "AST-DEMO-V-PANMISMATCH"
+        ],
+        "payments": [],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "PAYROLL_GHOST_EMPLOYEE",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "AST-DEMO-P-GHOSTP0"
+        ],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "PAYROLL_GHOST_EMPLOYEE",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "AST-DEMO-P-GHOSTP1"
+        ],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "PAYROLL_GHOST_EMPLOYEE",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "AST-DEMO-P-GHOSTP2"
+        ],
+        "employees": []
+      }
+    },
+    {
+      "rule_id": "PAYROLL_AFTER_EXIT",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "AST-DEMO-P-EXITP0"
+        ],
+        "employees": [
+          "AST-DEMO-E-EXIT0"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_BEFORE_JOIN",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "AST-DEMO-P-JOINP0"
+        ],
+        "employees": [
+          "AST-DEMO-E-JOIN0"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_AFTER_EXIT",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "AST-DEMO-P-EXITP1"
+        ],
+        "employees": [
+          "AST-DEMO-E-EXIT1"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_BEFORE_JOIN",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "AST-DEMO-P-JOINP1"
+        ],
+        "employees": [
+          "AST-DEMO-E-JOIN1"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_SALARY_MISMATCH",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "AST-DEMO-P-SALARYP"
+        ],
+        "employees": [
+          "AST-DEMO-E-SALARY"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_DUPLICATE_PAYMENT",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "AST-DEMO-P-DUPP1",
+          "AST-DEMO-P-DUPP2"
+        ],
+        "employees": [
+          "AST-DEMO-E-DUP"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_BANK_MISMATCH",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "AST-DEMO-P-BANKCHANGEP"
+        ],
+        "employees": [
+          "AST-DEMO-E-BANKCHANGE"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_DUPLICATE_PAYEE",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "AST-DEMO-P-SHAREP1",
+          "AST-DEMO-P-SHAREP2"
+        ],
+        "employees": [
+          "AST-DEMO-E-SHARE1",
+          "AST-DEMO-E-SHARE2"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_DUPLICATE_PAYEE",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [],
+        "employees": [
+          "AST-DEMO-E-PAN1",
+          "AST-DEMO-E-PAN2"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_DUPLICATE_PAYEE",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "AST-DEMO-P-CROSSP"
+        ],
+        "employees": [
+          "AST-DEMO-E-CROSSROSTER"
+        ]
+      }
+    },
+    {
+      "rule_id": "PAYROLL_GHOST_EMPLOYEE",
+      "involved_record_ids": {
+        "vendors": [],
+        "payments": [
+          "AST-DEMO-P-CROSSP"
+        ],
+        "employees": []
+      }
+    }
+  ],
+  "decoys": {
+    "VENDOR_SHARED_BANK": [
+      "AST-DEMO-V-NAMEDECOY1",
+      "AST-DEMO-V-NAMEDECOY2",
+      "AST-DEMO-V-EMPTY1",
+      "AST-DEMO-V-EMPTY2"
+    ],
+    "VENDOR_SHARED_ADDRESS": [
+      "AST-DEMO-V-NAMEDECOY1",
+      "AST-DEMO-V-NAMEDECOY2",
+      "AST-DEMO-V-EMPTY1",
+      "AST-DEMO-V-EMPTY2"
+    ],
+    "VENDOR_SHARED_PHONE": [
+      "AST-DEMO-V-NAMEDECOY1",
+      "AST-DEMO-V-NAMEDECOY2",
+      "AST-DEMO-V-EMPTY1",
+      "AST-DEMO-V-EMPTY2"
+    ],
+    "VENDOR_SHELL_NETWORK": [
+      "AST-DEMO-V-NAMEDECOY1",
+      "AST-DEMO-V-NAMEDECOY2",
+      "AST-DEMO-V-EMPTY1",
+      "AST-DEMO-V-EMPTY2"
+    ],
+    "VENDOR_INVALID_TAX_ID": [
+      "VEN0001",
+      "AST-DEMO-V-EMPTY1",
+      "AST-DEMO-V-EMPTY2"
+    ],
+    "VENDOR_NEW_LARGE_PAYMENT": [
+      "AST-DEMO-V-LIMITDECOY",
+      "AST-DEMO-V-DAYDECOY"
+    ],
+    "PAYROLL_GHOST_EMPLOYEE": [
+      "AST-DEMO-P-BASEP00"
+    ],
+    "PAYROLL_AFTER_EXIT": [
+      "AST-DEMO-P-EXITDAYP"
+    ],
+    "PAYROLL_BEFORE_JOIN": [
+      "AST-DEMO-P-JOINDAYP"
+    ],
+    "PAYROLL_DUPLICATE_PAYEE": [
+      "AST-DEMO-E-OTHERPERIOD",
+      "AST-DEMO-E-MISSINGBANK"
+    ],
+    "PAYROLL_SALARY_MISMATCH": [
+      "AST-DEMO-P-TOLERANCEP"
+    ],
+    "PAYROLL_DUPLICATE_PAYMENT": [
+      "AST-DEMO-P-PERIODP1",
+      "AST-DEMO-P-PERIODP2"
+    ],
+    "PAYROLL_BANK_MISMATCH": [
+      "AST-DEMO-P-MISSINGBANKP",
+      "AST-DEMO-P-BASEP00"
+    ]
+  },
+  "unavailable_rules": {
+    "VENDOR_NEW_LARGE_PAYMENT": "Cannot evaluate, vendor-linked transactions unavailable"
+  },
+  "bank_transfer_expectations": {
+    "cycle_ids": [
+      "AST-DEMO-CYCLE-01",
+      "AST-DEMO-CYCLE-02",
+      "AST-DEMO-CYCLE-03"
+    ],
+    "open_chain_decoys": [
+      "AST-DEMO-OPEN-01",
+      "AST-DEMO-OPEN-02",
+      "AST-DEMO-OPEN-03"
+    ],
+    "duplicate_payment_claim": "AST-DEMO-CLM-001",
+    "amount_mismatch_claim": "AST-DEMO-CLM-002",
+    "note": "New claims are pending, so all linked payments also lack checker approval. Reconciliation depends on current live approval state."
+  }
+}

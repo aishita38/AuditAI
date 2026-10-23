@@ -2,6 +2,7 @@
 AuditAI — API endpoints for receipt upload and OCR processing.
 """
 import logging
+import hashlib
 import shutil
 import uuid
 from datetime import datetime
@@ -110,6 +111,7 @@ async def upload_receipt(
                 extraction_confidence=min(fields.get("confidence", 0), confidence),
             )
             db.add(ocr_result)
+            receipt.ocr_result = ocr_result
             receipt.upload_status = "processed"
         else:
             receipt.upload_status = "failed"
@@ -134,9 +136,19 @@ async def upload_receipt(
                 db.delete(claim.prediction)
             claim.status = 'pending'
 
+    if claim:
+        from backend.app.models.policy import ClaimPolicy
+        from backend.app.policy_service import run_checks
+        p=db.get(ClaimPolicy,claim.claim_id)
+        if not p: p=ClaimPolicy(claim_id=claim.claim_id,inputs={}); db.add(p)
+        p.inputs={**(p.inputs or {}),'receipt_hash':hashlib.sha256(contents).hexdigest()}
+        run_checks(db,True)
     db.commit()
 
+    from backend.app.automatic_checks import after_import
+    checks=after_import(db,user,'receipt',claim_ids=[claim.claim_id]) if claim and receipt.upload_status=='processed' else None
     return {
+        'checks': checks,
         "status": "success" if receipt.upload_status == 'processed' else 'failed',
         "receipt_id": receipt_id,
         "upload_status": receipt.upload_status,

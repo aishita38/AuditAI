@@ -1,0 +1,29 @@
+﻿file,column,meaning
+transactions.csv,transaction_id,transaction id
+transactions.csv,company_id,company id
+transactions.csv,employee_id,employee id
+transactions.csv,vendor_id,vendor id
+transactions.csv,department,department
+transactions.csv,cost_center,cost center
+transactions.csv,project_id,project id
+transactions.csv,posting_timestamp,"Synthetic local India time, ISO 8601"
+transactions.csv,amount,INR; blank deliberately in data quality scenarios
+transactions.csv,currency,currency
+transactions.csv,invoice_number,invoice number
+transactions.csv,receipt_reference,receipt reference
+transactions.csv,receipt_amount,Simulated receipt total; not real OCR
+transactions.csv,receipt_vendor,receipt vendor
+transactions.csv,business_purpose,business purpose
+transactions.csv,account,account
+transactions.csv,payment_method,payment method
+transactions.csv,approver_id,approver id
+transactions.csv,purchase_order,purchase order
+transactions.csv,supporting_document,supporting document
+transactions.csv,original_transaction_id,Original entry reference for reversal checks
+transactions.csv,instrument,instrument
+transactions.csv,contract_terms,contract terms
+transactions.csv,invoice_sequence,invoice sequence
+transactions.csv,revenue_delivery_date,revenue delivery date
+transactions.csv,payroll_batch,payroll batch
+transactions.csv,payroll_adjustment,payroll adjustment
+transactions.csv,tax_breakdown_present,tax breakdown present

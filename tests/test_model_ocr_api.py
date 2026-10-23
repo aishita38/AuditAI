@@ -49,7 +49,7 @@ def png():
     return stream.getvalue()
 
 
-def test_receipt_invalidates_score_and_preserves_confidence(api, monkeypatch):
+def test_receipt_refreshes_affected_score_automatically_and_preserves_confidence(api, monkeypatch):
     client, session = api
     session.add(FraudPrediction(claim_id='C0', combined_fraud_score=.1))
     session.commit()
@@ -59,7 +59,11 @@ def test_receipt_invalidates_score_and_preserves_confidence(api, monkeypatch):
     assert response.json()['upload_status'] == 'processed'
     session.expire_all()
     c = session.query(ExpenseClaim).filter_by(claim_id='C0').one()
-    assert c.status == 'pending' and c.prediction is None
+    assert c.status in ('scored','flagged') and c.prediction is not None
+    assert response.json()['checks']['stages'][0]['scored_count']==1
+    assert c.prediction.feature_values['ocr_confidence']==pytest.approx(.4)
+    assert c.prediction.feature_values['ocr_low_confidence']==1
+    assert session.query(FraudPrediction).filter(FraudPrediction.claim_id.in_(['C1','C2'])).count()==0
     assert c.receipt.ocr_result.extraction_confidence <= .4
     assert float(c.receipt.ocr_result.extracted_amount) == 50
     assert client.post('/api/v1/receipts/upload?claim_id=MISSING', files={'file': ('r.png',png())}).status_code == 404
@@ -75,6 +79,13 @@ def test_ocr_failure_is_not_reported_as_processed(api, monkeypatch):
 
 def test_scoring_keeps_previous_claim_context_and_rescore_is_idempotent(api, monkeypatch):
     client, session = api
+    # This test isolates model cancellation; January 1 separately requires policy review.
+    for c in session.query(ExpenseClaim).all():
+        c.claimed_date+=timedelta(days=5);c.submitted_at+=timedelta(days=5)
+    session.commit()
+    # Isolate score-driven case lifecycle from missing-information policy findings.
+    from backend.app import policy_service
+    monkeypatch.setattr(policy_service,'run_checks',lambda *args,**kwargs: {})
     seen = []
     flagged = [True]
     monkeypatch.setattr(fraud, 'load_pipeline', lambda cfg: {'isolation_forest': None})

@@ -1,0 +1,505 @@
+{
+  "benchmark": {
+    "run_id": "1ddbe81cf99943cbbeb0e89bf3c3953a",
+    "scope": "Fixed stratified vendor-group synthetic split; train-only fitting; validation selects model and threshold; test excluded from both. Previously inspected source data is not a fresh external benchmark.",
+    "split_counts": {
+      "train": 2463,
+      "selection_validation": 383,
+      "cutoff_validation": 377,
+      "test": 777
+    },
+    "results": {
+      "aster": {
+        "validation_baseline": {
+          "threshold": 0.5,
+          "rows": 177,
+          "positives": 40,
+          "tp": 34,
+          "fp": 1,
+          "fn": 6,
+          "precision": 0.9714285714285714,
+          "recall": 0.85,
+          "f1": 0.9066666666666667
+        },
+        "validation": {
+          "threshold": 0.48663635563289703,
+          "rows": 177,
+          "positives": 40,
+          "tp": 40,
+          "fp": 2,
+          "fn": 0,
+          "precision": 0.9523809523809523,
+          "recall": 1.0,
+          "f1": 0.975609756097561
+        },
+        "test_baseline": {
+          "threshold": 0.5,
+          "rows": 419,
+          "positives": 20,
+          "tp": 15,
+          "fp": 4,
+          "fn": 5,
+          "precision": 0.7894736842105263,
+          "recall": 0.75,
+          "f1": 0.7692307692307692
+        },
+        "test": {
+          "threshold": 0.48663635563289703,
+          "rows": 419,
+          "positives": 20,
+          "tp": 20,
+          "fp": 12,
+          "fn": 0,
+          "precision": 0.625,
+          "recall": 1.0,
+          "f1": 0.7692307692307693
+        },
+        "test_average_precision": 0.8617505569479254
+      },
+      "original": {
+        "validation_baseline": {
+          "threshold": 0.5,
+          "rows": 200,
+          "positives": 11,
+          "tp": 8,
+          "fp": 29,
+          "fn": 3,
+          "precision": 0.21621621621621623,
+          "recall": 0.7272727272727273,
+          "f1": 0.33333333333333337
+        },
+        "validation": {
+          "threshold": 0.6626952593327228,
+          "rows": 200,
+          "positives": 11,
+          "tp": 5,
+          "fp": 0,
+          "fn": 6,
+          "precision": 1.0,
+          "recall": 0.45454545454545453,
+          "f1": 0.625
+        },
+        "test_baseline": {
+          "threshold": 0.5,
+          "rows": 358,
+          "positives": 36,
+          "tp": 22,
+          "fp": 56,
+          "fn": 14,
+          "precision": 0.28205128205128205,
+          "recall": 0.6111111111111112,
+          "f1": 0.38596491228070173
+        },
+        "test": {
+          "threshold": 0.6626952593327228,
+          "rows": 358,
+          "positives": 36,
+          "tp": 10,
+          "fp": 0,
+          "fn": 26,
+          "precision": 1.0,
+          "recall": 0.2777777777777778,
+          "f1": 0.4347826086956522
+        },
+        "test_average_precision": 0.5666528615726604
+      }
+    },
+    "thresholds": {
+      "aster": {
+        "threshold": 0.48663635563289703,
+        "basis": "Maximum cutoff-validation recall with precision >= 95%",
+        "run_id": "1ddbe81cf99943cbbeb0e89bf3c3953a"
+      },
+      "original": {
+        "threshold": 0.6626952593327228,
+        "basis": "Maximum cutoff-validation recall with precision >= 95%",
+        "run_id": "1ddbe81cf99943cbbeb0e89bf3c3953a"
+      },
+      "enterprise": {
+        "model_enabled": false,
+        "basis": "Policy and dedicated rules only; excluded from expense ML training and decisions"
+      }
+    },
+    "limitations": [
+      "Source data has been previously inspected; this repairs fitting overlap, not prior human exposure.",
+      "Synthetic scenario labels, not real fraud outcomes. No independent external benchmark.",
+      "Old cutoff 0.4351 cannot be transferred to the new model score scale.",
+      "Model family and early stopping use selection validation; threshold uses cutoff validation; test never updates parameters."
+    ]
+  },
+  "total_review_signals": 5122,
+  "breakdown": [
+    {
+      "detector": "Expense claims (model + policy, deduplicated)",
+      "findings": 5083,
+      "unit": "claims",
+      "source_records": 14000,
+      "url": "/claims?status=flagged"
+    },
+    {
+      "detector": "Vendor rules",
+      "findings": 10,
+      "unit": "rule findings (groups may overlap)",
+      "source_records": 39,
+      "url": "/audit-screens?tab=vendor"
+    },
+    {
+      "detector": "Payroll rules",
+      "findings": 14,
+      "unit": "rule findings (groups may overlap)",
+      "source_records": 40,
+      "roster_records": 37,
+      "url": "/audit-screens?tab=payroll"
+    },
+    {
+      "detector": "Circular payments",
+      "url": "/audit-screens?tab=circular",
+      "findings": 5,
+      "unit": "cycles",
+      "source_records": 38,
+      "limited": false
+    },
+    {
+      "detector": "Payment reconciliation",
+      "url": "/audit-screens?tab=reconciliation",
+      "findings": 10,
+      "unit": "linked claims with payment discrepancies",
+      "source_records": 38
+    }
+  ],
+  "incomplete": false,
+  "errors": [],
+  "definition": "Review signals across detectors, not unique fraudulent entities. A record can participate in several findings.",
+  "cohorts": [
+    {
+      "strategy": {
+        "dataset": "aster",
+        "model_enabled": true,
+        "threshold": 0.48663635563289703,
+        "basis": "Maximum cutoff-validation recall with precision >= 95%"
+      },
+      "company_policy_evaluated": 2000,
+      "holiday_policy_evaluated": 2000,
+      "name": "Aster expense claims",
+      "claims": 2000,
+      "scored": 2000,
+      "policy_evaluated": 2000,
+      "comparison_claims": 2000,
+      "flagged": 335,
+      "modes": {
+        "model_only": {
+          "flagged": 178,
+          "available": 2000,
+          "metrics": {
+            "precision": 0.8426966292134831,
+            "recall": 1.0,
+            "f1": 0.9146341463414633,
+            "true_positive": 150,
+            "false_positive": 28,
+            "false_negative": 0,
+            "true_negative": 1822,
+            "evaluated": 2000,
+            "flagged_in_evaluation": 178,
+            "average_precision": 0.9860996525563221,
+            "pr_auc_trapezoidal": 0.9860133515778495,
+            "precision_at_k": {
+              "10": 1.0,
+              "50": 1.0,
+              "100": 1.0
+            }
+          },
+          "disabled": false
+        },
+        "policy_only": {
+          "flagged": 279,
+          "available": 2000,
+          "metrics": {
+            "precision": 0.43010752688172044,
+            "recall": 0.8,
+            "f1": 0.5594405594405595,
+            "true_positive": 120,
+            "false_positive": 159,
+            "false_negative": 30,
+            "true_negative": 1691,
+            "evaluated": 2000,
+            "flagged_in_evaluation": 279,
+            "average_precision": null,
+            "pr_auc_trapezoidal": null,
+            "precision_at_k": {}
+          },
+          "disabled": false
+        },
+        "combined": {
+          "flagged": 335,
+          "available": 2000,
+          "metrics": {
+            "precision": 0.44776119402985076,
+            "recall": 1.0,
+            "f1": 0.6185567010309279,
+            "true_positive": 150,
+            "false_positive": 185,
+            "false_negative": 0,
+            "true_negative": 1665,
+            "evaluated": 2000,
+            "flagged_in_evaluation": 335,
+            "average_precision": null,
+            "pr_auc_trapezoidal": null,
+            "precision_at_k": {}
+          },
+          "disabled": false
+        }
+      },
+      "metrics": {
+        "precision": 0.44776119402985076,
+        "recall": 1.0,
+        "f1": 0.6185567010309279,
+        "true_positive": 150,
+        "false_positive": 185,
+        "false_negative": 0,
+        "true_negative": 1665,
+        "evaluated": 2000,
+        "flagged_in_evaluation": 335,
+        "average_precision": null,
+        "pr_auc_trapezoidal": null,
+        "precision_at_k": {},
+        "labelled_scored": 2000
+      }
+    },
+    {
+      "strategy": {
+        "dataset": "enterprise",
+        "model_enabled": false,
+        "threshold": 0.5,
+        "basis": "Policy and dedicated rules only; excluded from expense ML training and decisions"
+      },
+      "company_policy_evaluated": 10000,
+      "holiday_policy_evaluated": 10000,
+      "name": "Enterprise records in expense schema (scope mismatch)",
+      "claims": 10000,
+      "scored": 10000,
+      "policy_evaluated": 10000,
+      "comparison_claims": 10000,
+      "flagged": 4547,
+      "modes": {
+        "model_only": {
+          "flagged": 0,
+          "available": 0,
+          "metrics": {
+            "precision": null,
+            "recall": null,
+            "f1": null,
+            "true_positive": null,
+            "false_positive": null,
+            "false_negative": null,
+            "true_negative": null,
+            "evaluated": 0,
+            "flagged_in_evaluation": 0,
+            "average_precision": null,
+            "pr_auc_trapezoidal": null,
+            "precision_at_k": {}
+          },
+          "disabled": true
+        },
+        "policy_only": {
+          "flagged": 4547,
+          "available": 10000,
+          "metrics": {
+            "precision": 0.38728832197053004,
+            "recall": 0.8805,
+            "f1": 0.537956315869864,
+            "true_positive": 1761,
+            "false_positive": 2786,
+            "false_negative": 239,
+            "true_negative": 5214,
+            "evaluated": 10000,
+            "flagged_in_evaluation": 4547,
+            "average_precision": null,
+            "pr_auc_trapezoidal": null,
+            "precision_at_k": {}
+          },
+          "disabled": false
+        },
+        "combined": {
+          "flagged": 4547,
+          "available": 10000,
+          "metrics": {
+            "precision": 0.38728832197053004,
+            "recall": 0.8805,
+            "f1": 0.537956315869864,
+            "true_positive": 1761,
+            "false_positive": 2786,
+            "false_negative": 239,
+            "true_negative": 5214,
+            "evaluated": 10000,
+            "flagged_in_evaluation": 4547,
+            "average_precision": null,
+            "pr_auc_trapezoidal": null,
+            "precision_at_k": {}
+          },
+          "disabled": false
+        }
+      },
+      "metrics": {
+        "precision": 0.38728832197053004,
+        "recall": 0.8805,
+        "f1": 0.537956315869864,
+        "true_positive": 1761,
+        "false_positive": 2786,
+        "false_negative": 239,
+        "true_negative": 5214,
+        "evaluated": 10000,
+        "flagged_in_evaluation": 4547,
+        "average_precision": null,
+        "pr_auc_trapezoidal": null,
+        "precision_at_k": {},
+        "labelled_scored": 10000
+      }
+    },
+    {
+      "strategy": {
+        "dataset": "original",
+        "model_enabled": true,
+        "threshold": 0.6626952593327228,
+        "basis": "Maximum cutoff-validation recall with precision >= 95%"
+      },
+      "company_policy_evaluated": 2000,
+      "holiday_policy_evaluated": 2000,
+      "name": "Original expense claims",
+      "claims": 2000,
+      "scored": 2000,
+      "policy_evaluated": 2000,
+      "comparison_claims": 2000,
+      "flagged": 201,
+      "modes": {
+        "model_only": {
+          "flagged": 65,
+          "available": 2000,
+          "metrics": {
+            "precision": 1.0,
+            "recall": 0.43333333333333335,
+            "f1": 0.6046511627906976,
+            "true_positive": 65,
+            "false_positive": 0,
+            "false_negative": 85,
+            "true_negative": 1850,
+            "evaluated": 2000,
+            "flagged_in_evaluation": 65,
+            "average_precision": 0.7658946827743146,
+            "pr_auc_trapezoidal": 0.7655580079921903,
+            "precision_at_k": {
+              "10": 1.0,
+              "50": 1.0,
+              "100": 0.88
+            }
+          },
+          "disabled": false
+        },
+        "policy_only": {
+          "flagged": 184,
+          "available": 2000,
+          "metrics": {
+            "precision": 0.30978260869565216,
+            "recall": 0.38,
+            "f1": 0.34131736526946105,
+            "true_positive": 57,
+            "false_positive": 127,
+            "false_negative": 93,
+            "true_negative": 1723,
+            "evaluated": 2000,
+            "flagged_in_evaluation": 184,
+            "average_precision": null,
+            "pr_auc_trapezoidal": null,
+            "precision_at_k": {}
+          },
+          "disabled": false
+        },
+        "combined": {
+          "flagged": 201,
+          "available": 2000,
+          "metrics": {
+            "precision": 0.3681592039800995,
+            "recall": 0.49333333333333335,
+            "f1": 0.42165242165242167,
+            "true_positive": 74,
+            "false_positive": 127,
+            "false_negative": 76,
+            "true_negative": 1723,
+            "evaluated": 2000,
+            "flagged_in_evaluation": 201,
+            "average_precision": null,
+            "pr_auc_trapezoidal": null,
+            "precision_at_k": {}
+          },
+          "disabled": false
+        }
+      },
+      "metrics": {
+        "precision": 0.3681592039800995,
+        "recall": 0.49333333333333335,
+        "f1": 0.42165242165242167,
+        "true_positive": 74,
+        "false_positive": 127,
+        "false_negative": 76,
+        "true_negative": 1723,
+        "evaluated": 2000,
+        "flagged_in_evaluation": 201,
+        "average_precision": null,
+        "pr_auc_trapezoidal": null,
+        "precision_at_k": {},
+        "labelled_scored": 2000
+      }
+    }
+  ],
+  "metric_scope": "Loaded-data diagnostics include training rows; use the separate split-test results for model evaluation. Model-only uses the displayed dataset-specific validation cutoff. Enterprise expense ML is disabled; enterprise combined equals policy-only, while vendor, payroll, circular and reconciliation rules remain separate. Policy-only includes full saved company checks and the holiday override. Model and policy comparisons use labelled scored policy-evaluated expense claims; enterprise policy evaluation does not require ML scores. Missing evaluations are excluded. PR-AUC and top-K apply only to model scores. Vendor/payroll metrics have separate evaluation units.",
+  "generated_at": "2026-10-18T13:59:27.229066+00:00",
+  "full_policy_run": {
+    "checked": 14000,
+    "requires_review": 4306
+  },
+  "ml_scores_unchanged": true,
+  "final_review_decisions_unchanged": true,
+  "rule_availability": {
+    "approval_limit": {
+      "unavailable": 14000
+    },
+    "invoice_splitting": {
+      "pass": 13740,
+      "review": 260
+    },
+    "duplicate": {
+      "unavailable": 13670,
+      "review": 330
+    },
+    "receipt_mismatch": {
+      "unavailable": 2000,
+      "pass": 11410,
+      "review": 590
+    },
+    "high_value": {
+      "pass": 12713,
+      "review": 1287
+    },
+    "weekend": {
+      "pass": 11021,
+      "review": 2979
+    },
+    "after_hours": {
+      "unavailable": 14000
+    },
+    "sequence_gap": {
+      "unavailable": 14000
+    },
+    "suspicious_wording": {
+      "pass": 13986,
+      "review": 14
+    },
+    "missing_info": {
+      "pass": 13890,
+      "review": 110
+    },
+    "round_number": {
+      "pass": 13857,
+      "review": 143
+    }
+  }
+}

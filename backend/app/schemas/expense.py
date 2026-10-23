@@ -128,7 +128,7 @@ class FraudPredictionResponse(BaseModel):
     combined_fraud_score: Optional[float] = None
     is_flagged: bool
     shap_values: Optional[Dict[str, float]] = None
-    feature_values: Optional[Dict[str, float]] = None
+    feature_values: Optional[Dict[str, Any]] = None
     predicted_at: datetime
 
     class Config:
@@ -173,6 +173,7 @@ class UploadResponse(BaseModel):
     processed_count: int = 0
     error_count: int = 0
     errors: List[Dict[str, Any]] = []
+    checks: Optional[Dict[str, Any]] = None
 
 
 class ScoringResponse(BaseModel):

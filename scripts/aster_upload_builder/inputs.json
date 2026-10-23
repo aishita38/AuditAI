@@ -1,0 +1,2046 @@
+{
+  "tables": {
+    "01_aster_vendor_master.csv": {
+      "headers": [
+        "vendor_id",
+        "vendor_name",
+        "bank_account",
+        "ifsc",
+        "address",
+        "phone",
+        "gstin",
+        "pan",
+        "director_names",
+        "onboarding_date",
+        "status"
+      ],
+      "rows": [
+        {
+          "vendor_id": "VEN0001",
+          "vendor_name": "Aster Test Supplier 001",
+          "bank_account": "BANKBASEV00",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV00",
+          "phone": "PHONEBASEV00",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV00",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "VEN0002",
+          "vendor_name": "Aster Test Supplier 002",
+          "bank_account": "BANKBASEV01",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV01",
+          "phone": "PHONEBASEV01",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV01",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "VEN0003",
+          "vendor_name": "Aster Test Supplier 003",
+          "bank_account": "BANKBASEV02",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV02",
+          "phone": "PHONEBASEV02",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV02",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "VEN0004",
+          "vendor_name": "Aster Test Supplier 004",
+          "bank_account": "BANKBASEV03",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV03",
+          "phone": "PHONEBASEV03",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV03",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "VEN0005",
+          "vendor_name": "Aster Test Supplier 005",
+          "bank_account": "BANKBASEV04",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV04",
+          "phone": "PHONEBASEV04",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV04",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "VEN0006",
+          "vendor_name": "Aster Test Supplier 006",
+          "bank_account": "BANKBASEV05",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV05",
+          "phone": "PHONEBASEV05",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV05",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "VEN0007",
+          "vendor_name": "Aster Test Supplier 007",
+          "bank_account": "BANKBASEV06",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV06",
+          "phone": "PHONEBASEV06",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV06",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "VEN0008",
+          "vendor_name": "Aster Test Supplier 008",
+          "bank_account": "BANKBASEV07",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV07",
+          "phone": "PHONEBASEV07",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV07",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "VEN0009",
+          "vendor_name": "Aster Test Supplier 009",
+          "bank_account": "BANKBASEV08",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV08",
+          "phone": "PHONEBASEV08",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV08",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "VEN0010",
+          "vendor_name": "Aster Test Supplier 010",
+          "bank_account": "BANKBASEV09",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV09",
+          "phone": "PHONEBASEV09",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV09",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "VEN0011",
+          "vendor_name": "Aster Test Supplier 011",
+          "bank_account": "BANKBASEV10",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV10",
+          "phone": "PHONEBASEV10",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV10",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "VEN0012",
+          "vendor_name": "Aster Test Supplier 012",
+          "bank_account": "BANKBASEV11",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV11",
+          "phone": "PHONEBASEV11",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV11",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "VEN0013",
+          "vendor_name": "Aster Test Supplier 013",
+          "bank_account": "BANKBASEV12",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV12",
+          "phone": "PHONEBASEV12",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV12",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "VEN0014",
+          "vendor_name": "Aster Test Supplier 014",
+          "bank_account": "BANKBASEV13",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV13",
+          "phone": "PHONEBASEV13",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV13",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "VEN0015",
+          "vendor_name": "Aster Test Supplier 015",
+          "bank_account": "BANKBASEV14",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV14",
+          "phone": "PHONEBASEV14",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV14",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "VEN0016",
+          "vendor_name": "Aster Test Supplier 016",
+          "bank_account": "BANKBASEV15",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV15",
+          "phone": "PHONEBASEV15",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV15",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "VEN0017",
+          "vendor_name": "Aster Test Supplier 017",
+          "bank_account": "BANKBASEV16",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV16",
+          "phone": "PHONEBASEV16",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV16",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "VEN0018",
+          "vendor_name": "Aster Test Supplier 018",
+          "bank_account": "BANKBASEV17",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV17",
+          "phone": "PHONEBASEV17",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV17",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "VEN0019",
+          "vendor_name": "Aster Test Supplier 019",
+          "bank_account": "BANKBASEV18",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV18",
+          "phone": "PHONEBASEV18",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV18",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "VEN0020",
+          "vendor_name": "Aster Test Supplier 020",
+          "bank_account": "BANKBASEV19",
+          "ifsc": "TEST0000001",
+          "address": "address BASEV19",
+          "phone": "PHONEBASEV19",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BASEV19",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "AST-DEMO-V-VB1",
+          "vendor_name": "Aster Demo Supplier VB1",
+          "bank_account": "SHARED VB",
+          "ifsc": "TEST0000001",
+          "address": "address VB1",
+          "phone": "PHONEVB1",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director VB1",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "AST-DEMO-V-VB2",
+          "vendor_name": "Aster Demo Supplier VB2",
+          "bank_account": "SHARED VB",
+          "ifsc": "TEST0000001",
+          "address": "address VB2",
+          "phone": "PHONEVB2",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director VB2",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "AST-DEMO-V-VA1",
+          "vendor_name": "Aster Demo Supplier VA1",
+          "bank_account": "BANKVA1",
+          "ifsc": "TEST0000001",
+          "address": "SHARED VA",
+          "phone": "PHONEVA1",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director VA1",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "AST-DEMO-V-VA2",
+          "vendor_name": "Aster Demo Supplier VA2",
+          "bank_account": "BANKVA2",
+          "ifsc": "TEST0000001",
+          "address": "SHARED VA",
+          "phone": "PHONEVA2",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director VA2",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "AST-DEMO-V-VP1",
+          "vendor_name": "Aster Demo Supplier VP1",
+          "bank_account": "BANKVP1",
+          "ifsc": "TEST0000001",
+          "address": "address VP1",
+          "phone": "SHARED VP",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director VP1",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "AST-DEMO-V-VP2",
+          "vendor_name": "Aster Demo Supplier VP2",
+          "bank_account": "BANKVP2",
+          "ifsc": "TEST0000001",
+          "address": "address VP2",
+          "phone": "SHARED VP",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director VP2",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "AST-DEMO-V-VN1",
+          "vendor_name": "Aster Demo Supplier VN1",
+          "bank_account": "BANKVN1",
+          "ifsc": "TEST0000001",
+          "address": "address VN1",
+          "phone": "PHONEVN1",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Synthetic Alice",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "AST-DEMO-V-VN2",
+          "vendor_name": "Aster Demo Supplier VN2",
+          "bank_account": "BANKVN2",
+          "ifsc": "TEST0000001",
+          "address": "address VN2",
+          "phone": "PHONEVN2",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": " Synthetic Alice ;Synthetic Bob",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "AST-DEMO-V-VN3",
+          "vendor_name": "Aster Demo Supplier VN3",
+          "bank_account": "BANKVN3",
+          "ifsc": "TEST0000001",
+          "address": "address VN3",
+          "phone": "PHONEVN3",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Synthetic Bob",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "AST-DEMO-V-BADPAN",
+          "vendor_name": "Aster Demo Supplier BADPAN",
+          "bank_account": "BANKBADPAN",
+          "ifsc": "TEST0000001",
+          "address": "address BADPAN",
+          "phone": "PHONEBADPAN",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "INVALID",
+          "director_names": "Director BADPAN",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "AST-DEMO-V-BADGST",
+          "vendor_name": "Aster Demo Supplier BADGST",
+          "bank_account": "BANKBADGST",
+          "ifsc": "TEST0000001",
+          "address": "address BADGST",
+          "phone": "PHONEBADGST",
+          "gstin": "INVALID",
+          "pan": "ABCDE1234F",
+          "director_names": "Director BADGST",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "AST-DEMO-V-PANMISMATCH",
+          "vendor_name": "Aster Demo Supplier PANMISMATCH",
+          "bank_account": "BANKPANMISMATCH",
+          "ifsc": "TEST0000001",
+          "address": "address PANMISMATCH",
+          "phone": "PHONEPANMISMATCH",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ZZZZZ9999Z",
+          "director_names": "Director PANMISMATCH",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "AST-DEMO-V-NEWLARGE",
+          "vendor_name": "Aster Demo Supplier NEWLARGE",
+          "bank_account": "BANKNEWLARGE",
+          "ifsc": "TEST0000001",
+          "address": "address NEWLARGE",
+          "phone": "PHONENEWLARGE",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director NEWLARGE",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "AST-DEMO-V-LIMITDECOY",
+          "vendor_name": "Aster Demo Supplier LIMITDECOY",
+          "bank_account": "BANKLIMITDECOY",
+          "ifsc": "TEST0000001",
+          "address": "address LIMITDECOY",
+          "phone": "PHONELIMITDECOY",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director LIMITDECOY",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "AST-DEMO-V-DAYDECOY",
+          "vendor_name": "Aster Demo Supplier DAYDECOY",
+          "bank_account": "BANKDAYDECOY",
+          "ifsc": "TEST0000001",
+          "address": "address DAYDECOY",
+          "phone": "PHONEDAYDECOY",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director DAYDECOY",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "AST-DEMO-V-NAMEDECOY1",
+          "vendor_name": "Aster Demo Supplier Same Trading",
+          "bank_account": "BANKNAMEDECOY1",
+          "ifsc": "TEST0000001",
+          "address": "address NAMEDECOY1",
+          "phone": "PHONENAMEDECOY1",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director NAMEDECOY1",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "AST-DEMO-V-NAMEDECOY2",
+          "vendor_name": "Aster Demo Supplier Same Trading",
+          "bank_account": "BANKNAMEDECOY2",
+          "ifsc": "TEST0000001",
+          "address": "address NAMEDECOY2",
+          "phone": "PHONENAMEDECOY2",
+          "gstin": "27ABCDE1234F1Z5",
+          "pan": "ABCDE1234F",
+          "director_names": "Director NAMEDECOY2",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "AST-DEMO-V-EMPTY1",
+          "vendor_name": "Aster Demo Supplier EMPTY1",
+          "bank_account": "",
+          "ifsc": "TEST0000001",
+          "address": "",
+          "phone": "",
+          "gstin": "",
+          "pan": "",
+          "director_names": "",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        },
+        {
+          "vendor_id": "AST-DEMO-V-EMPTY2",
+          "vendor_name": "Aster Demo Supplier EMPTY2",
+          "bank_account": "",
+          "ifsc": "TEST0000001",
+          "address": "",
+          "phone": "",
+          "gstin": "",
+          "pan": "",
+          "director_names": "",
+          "onboarding_date": "2025-01-01",
+          "status": "active"
+        }
+      ]
+    },
+    "02_aster_employee_roster.csv": {
+      "headers": [
+        "employee_id",
+        "name",
+        "bank_account",
+        "pan",
+        "department",
+        "join_date",
+        "exit_date",
+        "monthly_salary"
+      ],
+      "rows": [
+        {
+          "employee_id": "EMP001",
+          "name": "Aster Employee 001",
+          "bank_account": "BANKBASEE00",
+          "pan": "ABCDE1000F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "EMP002",
+          "name": "Aster Employee 002",
+          "bank_account": "BANKBASEE01",
+          "pan": "ABCDE1001F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "EMP003",
+          "name": "Aster Employee 003",
+          "bank_account": "BANKBASEE02",
+          "pan": "ABCDE1002F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "EMP004",
+          "name": "Aster Employee 004",
+          "bank_account": "BANKBASEE03",
+          "pan": "ABCDE1003F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "EMP005",
+          "name": "Aster Employee 005",
+          "bank_account": "BANKBASEE04",
+          "pan": "ABCDE1004F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "EMP006",
+          "name": "Aster Employee 006",
+          "bank_account": "BANKBASEE05",
+          "pan": "ABCDE1005F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "EMP007",
+          "name": "Aster Employee 007",
+          "bank_account": "BANKBASEE06",
+          "pan": "ABCDE1006F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "EMP008",
+          "name": "Aster Employee 008",
+          "bank_account": "BANKBASEE07",
+          "pan": "ABCDE1007F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "EMP009",
+          "name": "Aster Employee 009",
+          "bank_account": "BANKBASEE08",
+          "pan": "ABCDE1008F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "EMP010",
+          "name": "Aster Employee 010",
+          "bank_account": "BANKBASEE09",
+          "pan": "ABCDE1009F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "EMP011",
+          "name": "Aster Employee 011",
+          "bank_account": "BANKBASEE10",
+          "pan": "ABCDE1010F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "EMP012",
+          "name": "Aster Employee 012",
+          "bank_account": "BANKBASEE11",
+          "pan": "ABCDE1011F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "EMP013",
+          "name": "Aster Employee 013",
+          "bank_account": "BANKBASEE12",
+          "pan": "ABCDE1012F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "EMP014",
+          "name": "Aster Employee 014",
+          "bank_account": "BANKBASEE13",
+          "pan": "ABCDE1013F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "EMP015",
+          "name": "Aster Employee 015",
+          "bank_account": "BANKBASEE14",
+          "pan": "ABCDE1014F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "EMP016",
+          "name": "Aster Employee 016",
+          "bank_account": "BANKBASEE15",
+          "pan": "ABCDE1015F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "EMP017",
+          "name": "Aster Employee 017",
+          "bank_account": "BANKBASEE16",
+          "pan": "ABCDE1016F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "EMP018",
+          "name": "Aster Employee 018",
+          "bank_account": "BANKBASEE17",
+          "pan": "ABCDE1017F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "EMP019",
+          "name": "Aster Employee 019",
+          "bank_account": "BANKBASEE18",
+          "pan": "ABCDE1018F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "EMP020",
+          "name": "Aster Employee 020",
+          "bank_account": "BANKBASEE19",
+          "pan": "ABCDE1019F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "AST-DEMO-E-EXIT0",
+          "name": "Aster Demo Employee EXIT0",
+          "bank_account": "BANKEXIT0",
+          "pan": "ABCDE1020F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "2025-02-01",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "AST-DEMO-E-JOIN0",
+          "name": "Aster Demo Employee JOIN0",
+          "bank_account": "BANKJOIN0",
+          "pan": "ABCDE1021F",
+          "department": "Demo",
+          "join_date": "2025-03-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "AST-DEMO-E-EXIT1",
+          "name": "Aster Demo Employee EXIT1",
+          "bank_account": "BANKEXIT1",
+          "pan": "ABCDE1022F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "2025-02-01",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "AST-DEMO-E-JOIN1",
+          "name": "Aster Demo Employee JOIN1",
+          "bank_account": "BANKJOIN1",
+          "pan": "ABCDE1023F",
+          "department": "Demo",
+          "join_date": "2025-03-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "AST-DEMO-E-EXITDAY",
+          "name": "Aster Demo Employee EXITDAY",
+          "bank_account": "BANKEXITDAY",
+          "pan": "ABCDE1024F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "2025-02-28",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "AST-DEMO-E-JOINDAY",
+          "name": "Aster Demo Employee JOINDAY",
+          "bank_account": "BANKJOINDAY",
+          "pan": "ABCDE1025F",
+          "department": "Demo",
+          "join_date": "2025-02-28",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "AST-DEMO-E-TOLERANCE",
+          "name": "Aster Demo Employee TOLERANCE",
+          "bank_account": "BANKTOLERANCE",
+          "pan": "ABCDE1026F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "AST-DEMO-E-SALARY",
+          "name": "Aster Demo Employee SALARY",
+          "bank_account": "BANKSALARY",
+          "pan": "ABCDE1027F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "AST-DEMO-E-DUP",
+          "name": "Aster Demo Employee DUP",
+          "bank_account": "BANKDUP",
+          "pan": "ABCDE1028F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "AST-DEMO-E-OTHERPERIOD",
+          "name": "Aster Demo Employee OTHERPERIOD",
+          "bank_account": "BANKOTHERPERIOD",
+          "pan": "ABCDE1029F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "AST-DEMO-E-BANKCHANGE",
+          "name": "Aster Demo Employee BANKCHANGE",
+          "bank_account": "BANKBANKCHANGE",
+          "pan": "ABCDE1030F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "AST-DEMO-E-SHARE1",
+          "name": "Aster Demo Employee SHARE1",
+          "bank_account": "SAMEBANK",
+          "pan": "ABCDE1031F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "AST-DEMO-E-SHARE2",
+          "name": "Aster Demo Employee SHARE2",
+          "bank_account": " SAME-BANK ",
+          "pan": "ABCDE1032F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "AST-DEMO-E-PAN1",
+          "name": "Aster Demo Employee PAN1",
+          "bank_account": "BANKPAN1",
+          "pan": "ZZZZZ1234Z",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "AST-DEMO-E-PAN2",
+          "name": "Aster Demo Employee PAN2",
+          "bank_account": "BANKPAN2",
+          "pan": "ZZZZZ1234Z",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "AST-DEMO-E-CROSSROSTER",
+          "name": "Aster Demo Employee CROSSROSTER",
+          "bank_account": "CROSSBANK",
+          "pan": "ABCDE1035F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        },
+        {
+          "employee_id": "AST-DEMO-E-MISSINGBANK",
+          "name": "Aster Demo Employee MISSINGBANK",
+          "bank_account": "",
+          "pan": "ABCDE1036F",
+          "department": "Demo",
+          "join_date": "2024-01-01",
+          "exit_date": "",
+          "monthly_salary": "10000"
+        }
+      ]
+    },
+    "03_aster_payroll_payments.csv": {
+      "headers": [
+        "payment_id",
+        "employee_id",
+        "employee_name",
+        "bank_account",
+        "amount",
+        "pay_period",
+        "payment_date"
+      ],
+      "rows": [
+        {
+          "payment_id": "AST-DEMO-P-BASEP00",
+          "employee_id": "EMP001",
+          "employee_name": "Aster Employee 001",
+          "bank_account": "BANKBASEE00",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BASEP01",
+          "employee_id": "EMP002",
+          "employee_name": "Aster Employee 002",
+          "bank_account": "BANKBASEE01",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BASEP02",
+          "employee_id": "EMP003",
+          "employee_name": "Aster Employee 003",
+          "bank_account": "BANKBASEE02",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BASEP03",
+          "employee_id": "EMP004",
+          "employee_name": "Aster Employee 004",
+          "bank_account": "BANKBASEE03",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BASEP04",
+          "employee_id": "EMP005",
+          "employee_name": "Aster Employee 005",
+          "bank_account": "BANKBASEE04",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BASEP05",
+          "employee_id": "EMP006",
+          "employee_name": "Aster Employee 006",
+          "bank_account": "BANKBASEE05",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BASEP06",
+          "employee_id": "EMP007",
+          "employee_name": "Aster Employee 007",
+          "bank_account": "BANKBASEE06",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BASEP07",
+          "employee_id": "EMP008",
+          "employee_name": "Aster Employee 008",
+          "bank_account": "BANKBASEE07",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BASEP08",
+          "employee_id": "EMP009",
+          "employee_name": "Aster Employee 009",
+          "bank_account": "BANKBASEE08",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BASEP09",
+          "employee_id": "EMP010",
+          "employee_name": "Aster Employee 010",
+          "bank_account": "BANKBASEE09",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BASEP10",
+          "employee_id": "EMP011",
+          "employee_name": "Aster Employee 011",
+          "bank_account": "BANKBASEE10",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BASEP11",
+          "employee_id": "EMP012",
+          "employee_name": "Aster Employee 012",
+          "bank_account": "BANKBASEE11",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BASEP12",
+          "employee_id": "EMP013",
+          "employee_name": "Aster Employee 013",
+          "bank_account": "BANKBASEE12",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BASEP13",
+          "employee_id": "EMP014",
+          "employee_name": "Aster Employee 014",
+          "bank_account": "BANKBASEE13",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BASEP14",
+          "employee_id": "EMP015",
+          "employee_name": "Aster Employee 015",
+          "bank_account": "BANKBASEE14",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BASEP15",
+          "employee_id": "EMP016",
+          "employee_name": "Aster Employee 016",
+          "bank_account": "BANKBASEE15",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BASEP16",
+          "employee_id": "EMP017",
+          "employee_name": "Aster Employee 017",
+          "bank_account": "BANKBASEE16",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BASEP17",
+          "employee_id": "EMP018",
+          "employee_name": "Aster Employee 018",
+          "bank_account": "BANKBASEE17",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BASEP18",
+          "employee_id": "EMP019",
+          "employee_name": "Aster Employee 019",
+          "bank_account": "BANKBASEE18",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BASEP19",
+          "employee_id": "EMP020",
+          "employee_name": "Aster Employee 020",
+          "bank_account": "BANKBASEE19",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-GHOSTP0",
+          "employee_id": "AST-DEMO-E-UNKNOWN0",
+          "employee_name": "Aster Demo Unlisted Employee",
+          "bank_account": "BANKUNKNOWN0",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-GHOSTP1",
+          "employee_id": "AST-DEMO-E-UNKNOWN1",
+          "employee_name": "Aster Demo Unlisted Employee",
+          "bank_account": "BANKUNKNOWN1",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-GHOSTP2",
+          "employee_id": "AST-DEMO-E-UNKNOWN2",
+          "employee_name": "Aster Demo Unlisted Employee",
+          "bank_account": "BANKUNKNOWN2",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-EXITP0",
+          "employee_id": "AST-DEMO-E-EXIT0",
+          "employee_name": "Aster Demo Employee EXIT0",
+          "bank_account": "BANKEXIT0",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-JOINP0",
+          "employee_id": "AST-DEMO-E-JOIN0",
+          "employee_name": "Aster Demo Employee JOIN0",
+          "bank_account": "BANKJOIN0",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-EXITP1",
+          "employee_id": "AST-DEMO-E-EXIT1",
+          "employee_name": "Aster Demo Employee EXIT1",
+          "bank_account": "BANKEXIT1",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-JOINP1",
+          "employee_id": "AST-DEMO-E-JOIN1",
+          "employee_name": "Aster Demo Employee JOIN1",
+          "bank_account": "BANKJOIN1",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-EXITDAYP",
+          "employee_id": "AST-DEMO-E-EXITDAY",
+          "employee_name": "Aster Demo Employee EXITDAY",
+          "bank_account": "BANKEXITDAY",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-JOINDAYP",
+          "employee_id": "AST-DEMO-E-JOINDAY",
+          "employee_name": "Aster Demo Employee JOINDAY",
+          "bank_account": "BANKJOINDAY",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-TOLERANCEP",
+          "employee_id": "AST-DEMO-E-TOLERANCE",
+          "employee_name": "Aster Demo Employee TOLERANCE",
+          "bank_account": "BANKTOLERANCE",
+          "amount": "10500",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-SALARYP",
+          "employee_id": "AST-DEMO-E-SALARY",
+          "employee_name": "Aster Demo Employee SALARY",
+          "bank_account": "BANKSALARY",
+          "amount": "10500.01",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-DUPP1",
+          "employee_id": "AST-DEMO-E-DUP",
+          "employee_name": "Aster Demo Employee DUP",
+          "bank_account": "BANKDUP",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-DUPP2",
+          "employee_id": "AST-DEMO-E-DUP",
+          "employee_name": "Aster Demo Employee DUP",
+          "bank_account": "BANKDUP",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-PERIODP1",
+          "employee_id": "AST-DEMO-E-OTHERPERIOD",
+          "employee_name": "Aster Demo Employee OTHERPERIOD",
+          "bank_account": "BANKOTHERPERIOD",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-PERIODP2",
+          "employee_id": "AST-DEMO-E-OTHERPERIOD",
+          "employee_name": "Aster Demo Employee OTHERPERIOD",
+          "bank_account": "BANKOTHERPERIOD",
+          "amount": "10000",
+          "pay_period": "2025-03",
+          "payment_date": "2025-03-31"
+        },
+        {
+          "payment_id": "AST-DEMO-P-BANKCHANGEP",
+          "employee_id": "AST-DEMO-E-BANKCHANGE",
+          "employee_name": "Aster Demo Employee BANKCHANGE",
+          "bank_account": "CHANGED",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-SHAREP1",
+          "employee_id": "AST-DEMO-E-SHARE1",
+          "employee_name": "Aster Demo Employee SHARE1",
+          "bank_account": "SAMEBANK",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-SHAREP2",
+          "employee_id": "AST-DEMO-E-SHARE2",
+          "employee_name": "Aster Demo Employee SHARE2",
+          "bank_account": "SAMEBANK",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-CROSSP",
+          "employee_id": "AST-DEMO-E-CROSSGHOST",
+          "employee_name": "Aster Demo Unlisted Employee",
+          "bank_account": "CROSSBANK",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        },
+        {
+          "payment_id": "AST-DEMO-P-MISSINGBANKP",
+          "employee_id": "AST-DEMO-E-MISSINGBANK",
+          "employee_name": "Aster Demo Employee MISSINGBANK",
+          "bank_account": "",
+          "amount": "10000",
+          "pay_period": "2025-02",
+          "payment_date": "2025-02-28"
+        }
+      ]
+    },
+    "04_aster_expense_claims.csv": {
+      "headers": [
+        "claim_id",
+        "employee_id",
+        "employee_name",
+        "claimed_amount",
+        "vendor_name",
+        "claimed_date",
+        "submitted_at",
+        "category",
+        "description",
+        "ocr_amount",
+        "ocr_vendor",
+        "is_fraud",
+        "fraud_type"
+      ],
+      "rows": [
+        {
+          "claim_id": "AST-DEMO-CLM-001",
+          "employee_id": "EMP001",
+          "employee_name": "Aster Employee 001",
+          "claimed_amount": 4500,
+          "vendor_name": "Aster Test Supplier 001",
+          "claimed_date": "2025-02-28",
+          "submitted_at": "2025-02-28T11:00:00Z",
+          "category": "Office supplies",
+          "description": "Aster synthetic operational purchase",
+          "ocr_amount": 4500,
+          "ocr_vendor": "Aster Test Supplier 001",
+          "is_fraud": false,
+          "fraud_type": "none"
+        },
+        {
+          "claim_id": "AST-DEMO-CLM-002",
+          "employee_id": "EMP002",
+          "employee_name": "Aster Employee 002",
+          "claimed_amount": 45000,
+          "vendor_name": "Aster Test Supplier 002",
+          "claimed_date": "2025-02-28",
+          "submitted_at": "2025-02-28T11:00:00Z",
+          "category": "Office supplies",
+          "description": "Aster synthetic operational purchase",
+          "ocr_amount": 4500,
+          "ocr_vendor": "Aster Test Supplier 002",
+          "is_fraud": true,
+          "fraud_type": "receipt_mismatch"
+        },
+        {
+          "claim_id": "AST-DEMO-CLM-003",
+          "employee_id": "EMP003",
+          "employee_name": "Aster Employee 003",
+          "claimed_amount": 6000,
+          "vendor_name": "Aster Test Supplier 003",
+          "claimed_date": "2025-02-28",
+          "submitted_at": "2025-02-28T11:00:00Z",
+          "category": "Office supplies",
+          "description": "Aster synthetic operational purchase",
+          "ocr_amount": 6000,
+          "ocr_vendor": "Aster Test Supplier 003",
+          "is_fraud": false,
+          "fraud_type": "none"
+        },
+        {
+          "claim_id": "AST-DEMO-CLM-004",
+          "employee_id": "EMP004",
+          "employee_name": "Aster Employee 004",
+          "claimed_amount": 1800,
+          "vendor_name": "Aster Test Supplier 004",
+          "claimed_date": "2025-02-28",
+          "submitted_at": "2025-02-28T11:00:00Z",
+          "category": "Office supplies",
+          "description": "Aster synthetic operational purchase",
+          "ocr_amount": 1800,
+          "ocr_vendor": "Aster Test Supplier 004",
+          "is_fraud": false,
+          "fraud_type": "none"
+        },
+        {
+          "claim_id": "AST-DEMO-CLM-005",
+          "employee_id": "EMP005",
+          "employee_name": "Aster Employee 005",
+          "claimed_amount": 1900,
+          "vendor_name": "Aster Test Supplier 005",
+          "claimed_date": "2025-02-28",
+          "submitted_at": "2025-02-28T11:00:00Z",
+          "category": "Office supplies",
+          "description": "Aster synthetic operational purchase",
+          "ocr_amount": 1900,
+          "ocr_vendor": "Aster Test Supplier 005",
+          "is_fraud": false,
+          "fraud_type": "none"
+        },
+        {
+          "claim_id": "AST-DEMO-CLM-006",
+          "employee_id": "EMP006",
+          "employee_name": "Aster Employee 006",
+          "claimed_amount": 2000,
+          "vendor_name": "Aster Test Supplier 006",
+          "claimed_date": "2025-02-28",
+          "submitted_at": "2025-02-28T11:00:00Z",
+          "category": "Office supplies",
+          "description": "Aster synthetic operational purchase",
+          "ocr_amount": 2000,
+          "ocr_vendor": "Aster Test Supplier 006",
+          "is_fraud": false,
+          "fraud_type": "none"
+        },
+        {
+          "claim_id": "AST-DEMO-CLM-007",
+          "employee_id": "EMP007",
+          "employee_name": "Aster Employee 007",
+          "claimed_amount": 2100,
+          "vendor_name": "Aster Test Supplier 007",
+          "claimed_date": "2025-02-28",
+          "submitted_at": "2025-02-28T11:00:00Z",
+          "category": "Office supplies",
+          "description": "Aster synthetic operational purchase",
+          "ocr_amount": 2100,
+          "ocr_vendor": "Aster Test Supplier 007",
+          "is_fraud": false,
+          "fraud_type": "none"
+        },
+        {
+          "claim_id": "AST-DEMO-CLM-008",
+          "employee_id": "EMP008",
+          "employee_name": "Aster Employee 008",
+          "claimed_amount": 2200,
+          "vendor_name": "Aster Test Supplier 008",
+          "claimed_date": "2025-02-28",
+          "submitted_at": "2025-02-28T11:00:00Z",
+          "category": "Office supplies",
+          "description": "Aster synthetic operational purchase",
+          "ocr_amount": 2200,
+          "ocr_vendor": "Aster Test Supplier 008",
+          "is_fraud": false,
+          "fraud_type": "none"
+        },
+        {
+          "claim_id": "AST-DEMO-CLM-009",
+          "employee_id": "EMP009",
+          "employee_name": "Aster Employee 009",
+          "claimed_amount": 2300,
+          "vendor_name": "Aster Test Supplier 009",
+          "claimed_date": "2025-02-28",
+          "submitted_at": "2025-02-28T11:00:00Z",
+          "category": "Office supplies",
+          "description": "Aster synthetic operational purchase",
+          "ocr_amount": 2300,
+          "ocr_vendor": "Aster Test Supplier 009",
+          "is_fraud": false,
+          "fraud_type": "none"
+        },
+        {
+          "claim_id": "AST-DEMO-CLM-010",
+          "employee_id": "EMP010",
+          "employee_name": "Aster Employee 010",
+          "claimed_amount": 2400,
+          "vendor_name": "Aster Test Supplier 010",
+          "claimed_date": "2025-02-28",
+          "submitted_at": "2025-02-28T11:00:00Z",
+          "category": "Office supplies",
+          "description": "Aster synthetic operational purchase",
+          "ocr_amount": 2400,
+          "ocr_vendor": "Aster Test Supplier 010",
+          "is_fraud": false,
+          "fraud_type": "none"
+        },
+        {
+          "claim_id": "AST-DEMO-CLM-011",
+          "employee_id": "EMP011",
+          "employee_name": "Aster Employee 011",
+          "claimed_amount": 2500,
+          "vendor_name": "Aster Test Supplier 011",
+          "claimed_date": "2025-02-28",
+          "submitted_at": "2025-02-28T11:00:00Z",
+          "category": "Office supplies",
+          "description": "Aster synthetic operational purchase",
+          "ocr_amount": 2500,
+          "ocr_vendor": "Aster Test Supplier 011",
+          "is_fraud": false,
+          "fraud_type": "none"
+        },
+        {
+          "claim_id": "AST-DEMO-CLM-012",
+          "employee_id": "EMP012",
+          "employee_name": "Aster Employee 012",
+          "claimed_amount": 2600,
+          "vendor_name": "Aster Test Supplier 012",
+          "claimed_date": "2025-02-28",
+          "submitted_at": "2025-02-28T11:00:00Z",
+          "category": "Office supplies",
+          "description": "Aster synthetic operational purchase",
+          "ocr_amount": 2600,
+          "ocr_vendor": "Aster Test Supplier 012",
+          "is_fraud": false,
+          "fraud_type": "none"
+        },
+        {
+          "claim_id": "AST-DEMO-CLM-013",
+          "employee_id": "EMP013",
+          "employee_name": "Aster Employee 013",
+          "claimed_amount": 2700,
+          "vendor_name": "Aster Test Supplier 013",
+          "claimed_date": "2025-02-28",
+          "submitted_at": "2025-02-28T11:00:00Z",
+          "category": "Office supplies",
+          "description": "Aster synthetic operational purchase",
+          "ocr_amount": 2700,
+          "ocr_vendor": "Aster Test Supplier 013",
+          "is_fraud": false,
+          "fraud_type": "none"
+        },
+        {
+          "claim_id": "AST-DEMO-CLM-014",
+          "employee_id": "EMP014",
+          "employee_name": "Aster Employee 014",
+          "claimed_amount": 2800,
+          "vendor_name": "Aster Test Supplier 014",
+          "claimed_date": "2025-02-28",
+          "submitted_at": "2025-02-28T11:00:00Z",
+          "category": "Office supplies",
+          "description": "Aster synthetic operational purchase",
+          "ocr_amount": 2800,
+          "ocr_vendor": "Aster Test Supplier 014",
+          "is_fraud": false,
+          "fraud_type": "none"
+        },
+        {
+          "claim_id": "AST-DEMO-CLM-015",
+          "employee_id": "EMP015",
+          "employee_name": "Aster Employee 015",
+          "claimed_amount": 2900,
+          "vendor_name": "Aster Test Supplier 015",
+          "claimed_date": "2025-02-28",
+          "submitted_at": "2025-02-28T11:00:00Z",
+          "category": "Office supplies",
+          "description": "Aster synthetic operational purchase",
+          "ocr_amount": 2900,
+          "ocr_vendor": "Aster Test Supplier 015",
+          "is_fraud": false,
+          "fraud_type": "none"
+        }
+      ]
+    },
+    "05_aster_bank_transfers.csv": {
+      "headers": [
+        "transaction_id",
+        "sender_account",
+        "receiver_account",
+        "amount",
+        "currency",
+        "timestamp",
+        "claim_id"
+      ],
+      "rows": [
+        {
+          "transaction_id": "AST-DEMO-CYCLE-01",
+          "sender_account": "BANKBASEV00",
+          "receiver_account": "BANKBASEV01",
+          "amount": 100000,
+          "currency": "INR",
+          "timestamp": "2025-03-01T09:00:00Z",
+          "claim_id": ""
+        },
+        {
+          "transaction_id": "AST-DEMO-CYCLE-02",
+          "sender_account": "BANKBASEV01",
+          "receiver_account": "BANKBASEV02",
+          "amount": 98000,
+          "currency": "INR",
+          "timestamp": "2025-03-01T10:00:00Z",
+          "claim_id": ""
+        },
+        {
+          "transaction_id": "AST-DEMO-CYCLE-03",
+          "sender_account": "BANKBASEV02",
+          "receiver_account": "BANKBASEV00",
+          "amount": 95000,
+          "currency": "INR",
+          "timestamp": "2025-03-01T11:00:00Z",
+          "claim_id": ""
+        },
+        {
+          "transaction_id": "AST-DEMO-OPEN-01",
+          "sender_account": "ASTER-DEMO-COMPANY",
+          "receiver_account": "BANKBASEV05",
+          "amount": 12000,
+          "currency": "INR",
+          "timestamp": "2025-03-02T09:00:00Z",
+          "claim_id": ""
+        },
+        {
+          "transaction_id": "AST-DEMO-OPEN-02",
+          "sender_account": "ASTER-DEMO-COMPANY",
+          "receiver_account": "BANKBASEV06",
+          "amount": 12500,
+          "currency": "INR",
+          "timestamp": "2025-03-02T10:00:00Z",
+          "claim_id": ""
+        },
+        {
+          "transaction_id": "AST-DEMO-OPEN-03",
+          "sender_account": "ASTER-DEMO-COMPANY",
+          "receiver_account": "BANKBASEV07",
+          "amount": 13000,
+          "currency": "INR",
+          "timestamp": "2025-03-02T11:00:00Z",
+          "claim_id": ""
+        },
+        {
+          "transaction_id": "AST-DEMO-PAID-01",
+          "sender_account": "ASTER-DEMO-COMPANY",
+          "receiver_account": "BANKBASEV00",
+          "amount": 4500,
+          "currency": "INR",
+          "timestamp": "2025-03-03T09:00:00Z",
+          "claim_id": "AST-DEMO-CLM-001"
+        },
+        {
+          "transaction_id": "AST-DEMO-PAID-02",
+          "sender_account": "ASTER-DEMO-COMPANY",
+          "receiver_account": "BANKBASEV00",
+          "amount": 4500,
+          "currency": "INR",
+          "timestamp": "2025-03-03T10:00:00Z",
+          "claim_id": "AST-DEMO-CLM-001"
+        },
+        {
+          "transaction_id": "AST-DEMO-PAID-03",
+          "sender_account": "ASTER-DEMO-COMPANY",
+          "receiver_account": "BANKBASEV01",
+          "amount": 450000,
+          "currency": "INR",
+          "timestamp": "2025-03-03T11:00:00Z",
+          "claim_id": "AST-DEMO-CLM-002"
+        },
+        {
+          "transaction_id": "AST-DEMO-PAID-04",
+          "sender_account": "ASTER-DEMO-COMPANY",
+          "receiver_account": "BANKBASEV02",
+          "amount": 6000,
+          "currency": "INR",
+          "timestamp": "2025-03-03T12:00:00Z",
+          "claim_id": "AST-DEMO-CLM-003"
+        }
+      ]
+    },
+    "06_receipt_upload_map.csv": {
+      "headers": [
+        "filename",
+        "claim_id",
+        "receipt_id",
+        "vendor",
+        "amount",
+        "date"
+      ],
+      "rows": [
+        {
+          "filename": "receipt_AST-DEMO-CLM-001.png",
+          "claim_id": "AST-DEMO-CLM-001",
+          "receipt_id": "AST-DEMO-RCP-001",
+          "vendor": "Aster Test Supplier 001",
+          "amount": 4500,
+          "date": "2025-02-28"
+        },
+        {
+          "filename": "receipt_AST-DEMO-CLM-002.png",
+          "claim_id": "AST-DEMO-CLM-002",
+          "receipt_id": "AST-DEMO-RCP-002",
+          "vendor": "Aster Test Supplier 002",
+          "amount": 4500,
+          "date": "2025-02-28"
+        },
+        {
+          "filename": "receipt_AST-DEMO-CLM-003.png",
+          "claim_id": "AST-DEMO-CLM-003",
+          "receipt_id": "AST-DEMO-RCP-003",
+          "vendor": "Aster Test Supplier 003",
+          "amount": 6000,
+          "date": "2025-02-28"
+        }
+      ]
+    }
+  },
+  "receipts": [
+    {
+      "filename": "receipt_AST-DEMO-CLM-001.png",
+      "claim_id": "AST-DEMO-CLM-001",
+      "receipt_id": "AST-DEMO-RCP-001",
+      "vendor": "Aster Test Supplier 001",
+      "amount": 4500,
+      "date": "2025-02-28"
+    },
+    {
+      "filename": "receipt_AST-DEMO-CLM-002.png",
+      "claim_id": "AST-DEMO-CLM-002",
+      "receipt_id": "AST-DEMO-RCP-002",
+      "vendor": "Aster Test Supplier 002",
+      "amount": 4500,
+      "date": "2025-02-28"
+    },
+    {
+      "filename": "receipt_AST-DEMO-CLM-003.png",
+      "claim_id": "AST-DEMO-CLM-003",
+      "receipt_id": "AST-DEMO-RCP-003",
+      "vendor": "Aster Test Supplier 003",
+      "amount": 6000,
+      "date": "2025-02-28"
+    }
+  ],
+  "truth": {
+    "scope": "Synthetic deterministic rule fixtures, not production fraud labels.",
+    "findings": [
+      {
+        "rule_id": "VENDOR_SHARED_BANK",
+        "involved_record_ids": {
+          "vendors": [
+            "AST-DEMO-V-VB1",
+            "AST-DEMO-V-VB2"
+          ],
+          "payments": [],
+          "employees": []
+        }
+      },
+      {
+        "rule_id": "VENDOR_SHELL_NETWORK",
+        "involved_record_ids": {
+          "vendors": [
+            "AST-DEMO-V-VB1",
+            "AST-DEMO-V-VB2"
+          ],
+          "payments": [],
+          "employees": []
+        }
+      },
+      {
+        "rule_id": "VENDOR_SHARED_ADDRESS",
+        "involved_record_ids": {
+          "vendors": [
+            "AST-DEMO-V-VA1",
+            "AST-DEMO-V-VA2"
+          ],
+          "payments": [],
+          "employees": []
+        }
+      },
+      {
+        "rule_id": "VENDOR_SHELL_NETWORK",
+        "involved_record_ids": {
+          "vendors": [
+            "AST-DEMO-V-VA1",
+            "AST-DEMO-V-VA2"
+          ],
+          "payments": [],
+          "employees": []
+        }
+      },
+      {
+        "rule_id": "VENDOR_SHARED_PHONE",
+        "involved_record_ids": {
+          "vendors": [
+            "AST-DEMO-V-VP1",
+            "AST-DEMO-V-VP2"
+          ],
+          "payments": [],
+          "employees": []
+        }
+      },
+      {
+        "rule_id": "VENDOR_SHELL_NETWORK",
+        "involved_record_ids": {
+          "vendors": [
+            "AST-DEMO-V-VP1",
+            "AST-DEMO-V-VP2"
+          ],
+          "payments": [],
+          "employees": []
+        }
+      },
+      {
+        "rule_id": "VENDOR_SHELL_NETWORK",
+        "involved_record_ids": {
+          "vendors": [
+            "AST-DEMO-V-VN1",
+            "AST-DEMO-V-VN2",
+            "AST-DEMO-V-VN3"
+          ],
+          "payments": [],
+          "employees": []
+        }
+      },
+      {
+        "rule_id": "VENDOR_INVALID_TAX_ID",
+        "involved_record_ids": {
+          "vendors": [
+            "AST-DEMO-V-BADPAN"
+          ],
+          "payments": [],
+          "employees": []
+        }
+      },
+      {
+        "rule_id": "VENDOR_INVALID_TAX_ID",
+        "involved_record_ids": {
+          "vendors": [
+            "AST-DEMO-V-BADGST"
+          ],
+          "payments": [],
+          "employees": []
+        }
+      },
+      {
+        "rule_id": "VENDOR_INVALID_TAX_ID",
+        "involved_record_ids": {
+          "vendors": [
+            "AST-DEMO-V-PANMISMATCH"
+          ],
+          "payments": [],
+          "employees": []
+        }
+      },
+      {
+        "rule_id": "PAYROLL_GHOST_EMPLOYEE",
+        "involved_record_ids": {
+          "vendors": [],
+          "payments": [
+            "AST-DEMO-P-GHOSTP0"
+          ],
+          "employees": []
+        }
+      },
+      {
+        "rule_id": "PAYROLL_GHOST_EMPLOYEE",
+        "involved_record_ids": {
+          "vendors": [],
+          "payments": [
+            "AST-DEMO-P-GHOSTP1"
+          ],
+          "employees": []
+        }
+      },
+      {
+        "rule_id": "PAYROLL_GHOST_EMPLOYEE",
+        "involved_record_ids": {
+          "vendors": [],
+          "payments": [
+            "AST-DEMO-P-GHOSTP2"
+          ],
+          "employees": []
+        }
+      },
+      {
+        "rule_id": "PAYROLL_AFTER_EXIT",
+        "involved_record_ids": {
+          "vendors": [],
+          "payments": [
+            "AST-DEMO-P-EXITP0"
+          ],
+          "employees": [
+            "AST-DEMO-E-EXIT0"
+          ]
+        }
+      },
+      {
+        "rule_id": "PAYROLL_BEFORE_JOIN",
+        "involved_record_ids": {
+          "vendors": [],
+          "payments": [
+            "AST-DEMO-P-JOINP0"
+          ],
+          "employees": [
+            "AST-DEMO-E-JOIN0"
+          ]
+        }
+      },
+      {
+        "rule_id": "PAYROLL_AFTER_EXIT",
+        "involved_record_ids": {
+          "vendors": [],
+          "payments": [
+            "AST-DEMO-P-EXITP1"
+          ],
+          "employees": [
+            "AST-DEMO-E-EXIT1"
+          ]
+        }
+      },
+      {
+        "rule_id": "PAYROLL_BEFORE_JOIN",
+        "involved_record_ids": {
+          "vendors": [],
+          "payments": [
+            "AST-DEMO-P-JOINP1"
+          ],
+          "employees": [
+            "AST-DEMO-E-JOIN1"
+          ]
+        }
+      },
+      {
+        "rule_id": "PAYROLL_SALARY_MISMATCH",
+        "involved_record_ids": {
+          "vendors": [],
+          "payments": [
+            "AST-DEMO-P-SALARYP"
+          ],
+          "employees": [
+            "AST-DEMO-E-SALARY"
+          ]
+        }
+      },
+      {
+        "rule_id": "PAYROLL_DUPLICATE_PAYMENT",
+        "involved_record_ids": {
+          "vendors": [],
+          "payments": [
+            "AST-DEMO-P-DUPP1",
+            "AST-DEMO-P-DUPP2"
+          ],
+          "employees": [
+            "AST-DEMO-E-DUP"
+          ]
+        }
+      },
+      {
+        "rule_id": "PAYROLL_BANK_MISMATCH",
+        "involved_record_ids": {
+          "vendors": [],
+          "payments": [
+            "AST-DEMO-P-BANKCHANGEP"
+          ],
+          "employees": [
+            "AST-DEMO-E-BANKCHANGE"
+          ]
+        }
+      },
+      {
+        "rule_id": "PAYROLL_DUPLICATE_PAYEE",
+        "involved_record_ids": {
+          "vendors": [],
+          "payments": [
+            "AST-DEMO-P-SHAREP1",
+            "AST-DEMO-P-SHAREP2"
+          ],
+          "employees": [
+            "AST-DEMO-E-SHARE1",
+            "AST-DEMO-E-SHARE2"
+          ]
+        }
+      },
+      {
+        "rule_id": "PAYROLL_DUPLICATE_PAYEE",
+        "involved_record_ids": {
+          "vendors": [],
+          "payments": [],
+          "employees": [
+            "AST-DEMO-E-PAN1",
+            "AST-DEMO-E-PAN2"
+          ]
+        }
+      },
+      {
+        "rule_id": "PAYROLL_DUPLICATE_PAYEE",
+        "involved_record_ids": {
+          "vendors": [],
+          "payments": [
+            "AST-DEMO-P-CROSSP"
+          ],
+          "employees": [
+            "AST-DEMO-E-CROSSROSTER"
+          ]
+        }
+      },
+      {
+        "rule_id": "PAYROLL_GHOST_EMPLOYEE",
+        "involved_record_ids": {
+          "vendors": [],
+          "payments": [
+            "AST-DEMO-P-CROSSP"
+          ],
+          "employees": []
+        }
+      }
+    ],
+    "decoys": {
+      "VENDOR_SHARED_BANK": [
+        "AST-DEMO-V-NAMEDECOY1",
+        "AST-DEMO-V-NAMEDECOY2",
+        "AST-DEMO-V-EMPTY1",
+        "AST-DEMO-V-EMPTY2"
+      ],
+      "VENDOR_SHARED_ADDRESS": [
+        "AST-DEMO-V-NAMEDECOY1",
+        "AST-DEMO-V-NAMEDECOY2",
+        "AST-DEMO-V-EMPTY1",
+        "AST-DEMO-V-EMPTY2"
+      ],
+      "VENDOR_SHARED_PHONE": [
+        "AST-DEMO-V-NAMEDECOY1",
+        "AST-DEMO-V-NAMEDECOY2",
+        "AST-DEMO-V-EMPTY1",
+        "AST-DEMO-V-EMPTY2"
+      ],
+      "VENDOR_SHELL_NETWORK": [
+        "AST-DEMO-V-NAMEDECOY1",
+        "AST-DEMO-V-NAMEDECOY2",
+        "AST-DEMO-V-EMPTY1",
+        "AST-DEMO-V-EMPTY2"
+      ],
+      "VENDOR_INVALID_TAX_ID": [
+        "VEN0001",
+        "AST-DEMO-V-EMPTY1",
+        "AST-DEMO-V-EMPTY2"
+      ],
+      "VENDOR_NEW_LARGE_PAYMENT": [
+        "AST-DEMO-V-LIMITDECOY",
+        "AST-DEMO-V-DAYDECOY"
+      ],
+      "PAYROLL_GHOST_EMPLOYEE": [
+        "AST-DEMO-P-BASEP00"
+      ],
+      "PAYROLL_AFTER_EXIT": [
+        "AST-DEMO-P-EXITDAYP"
+      ],
+      "PAYROLL_BEFORE_JOIN": [
+        "AST-DEMO-P-JOINDAYP"
+      ],
+      "PAYROLL_DUPLICATE_PAYEE": [
+        "AST-DEMO-E-OTHERPERIOD",
+        "AST-DEMO-E-MISSINGBANK"
+      ],
+      "PAYROLL_SALARY_MISMATCH": [
+        "AST-DEMO-P-TOLERANCEP"
+      ],
+      "PAYROLL_DUPLICATE_PAYMENT": [
+        "AST-DEMO-P-PERIODP1",
+        "AST-DEMO-P-PERIODP2"
+      ],
+      "PAYROLL_BANK_MISMATCH": [
+        "AST-DEMO-P-MISSINGBANKP",
+        "AST-DEMO-P-BASEP00"
+      ]
+    },
+    "unavailable_rules": {
+      "VENDOR_NEW_LARGE_PAYMENT": "Cannot evaluate, vendor-linked transactions unavailable"
+    },
+    "bank_transfer_expectations": {
+      "cycle_ids": [
+        "AST-DEMO-CYCLE-01",
+        "AST-DEMO-CYCLE-02",
+        "AST-DEMO-CYCLE-03"
+      ],
+      "open_chain_decoys": [
+        "AST-DEMO-OPEN-01",
+        "AST-DEMO-OPEN-02",
+        "AST-DEMO-OPEN-03"
+      ],
+      "duplicate_payment_claim": "AST-DEMO-CLM-001",
+      "amount_mismatch_claim": "AST-DEMO-CLM-002",
+      "note": "New claims are pending, so all linked payments also lack checker approval. Reconciliation depends on current live approval state."
+    }
+  }
+}

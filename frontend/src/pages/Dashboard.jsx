@@ -4,6 +4,7 @@ import { FileText, AlertTriangle, Percent, Activity, Clock, ShieldAlert, CheckSq
 import { useNavigate } from 'react-router-dom';
 import { fraudApi } from '../api/client';
 import StatCard from '../components/StatCard';
+import DetectionOverview from '../components/DetectionOverview';
 import ScoreBadge from '../components/ScoreBadge';
 import LoadingSkeleton from '../components/LoadingSkeleton';
 import ExplainabilityPanel from '../components/ExplainabilityPanel';
@@ -94,6 +95,8 @@ export default function Dashboard() {
         <h1 className="text-2xl font-bold tracking-tight">Audit Dashboard</h1>
       </div>
 
+      <DetectionOverview/>
+      <h2>Expense model and policy results</h2>
       {/* Case Cycle KPI Row */}
       <div className="grid-cols-3 mb-6">
         <div className="glass-card flex items-center gap-4" style={{ padding: '16px 24px' }}>
@@ -162,7 +165,7 @@ export default function Dashboard() {
       <ExplainabilityPanel
         claims={data.recent_flagged}
         reasonBreakdown={data.explainability?.reason_breakdown || []}
-        threshold={(data.explainability?.display_threshold ?? 0.5) * 100}
+        threshold={null}
       />
 
       <div className="grid-cols-2 mb-6">

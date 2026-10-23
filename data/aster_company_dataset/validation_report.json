@@ -1,0 +1,10 @@
+{
+  "transactions": 20720,
+  "planted_anomaly_transactions": 5150,
+  "unlabelled_control_transactions": 15570,
+  "taxonomy_categories": 45,
+  "scenario_groups": 515,
+  "expense_claims": 2000,
+  "expense_anomalies": 150,
+  "checks": "Coverage, unique IDs, master references, split groups, duplicates, receipt mismatches, shared identities, Sunday dates, approval limits passed"
+}

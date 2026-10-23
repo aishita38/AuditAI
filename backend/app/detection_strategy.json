@@ -1,0 +1,16 @@
+{
+  "aster": {
+    "threshold": 0.48663635563289703,
+    "basis": "Maximum cutoff-validation recall with precision >= 95%",
+    "run_id": "1ddbe81cf99943cbbeb0e89bf3c3953a"
+  },
+  "original": {
+    "threshold": 0.6626952593327228,
+    "basis": "Maximum cutoff-validation recall with precision >= 95%",
+    "run_id": "1ddbe81cf99943cbbeb0e89bf3c3953a"
+  },
+  "enterprise": {
+    "model_enabled": false,
+    "basis": "Policy and dedicated rules only; excluded from expense ML training and decisions"
+  }
+}

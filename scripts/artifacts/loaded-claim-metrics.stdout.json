@@ -1,0 +1,230 @@
+{
+  "generated_at": "2026-10-18T13:03:45.924989+00:00",
+  "evaluation_scope": "Retrospective loaded synthetic claims; training overlap not excluded. Not held-out production performance.",
+  "label_source": "ExpenseClaim.is_fraud, checked against explicit fraud_type; synthetic scenario truth, not confirmed wrongdoing.",
+  "ranking": "Descending saved anomaly index, then claim_id ascending for tied scores.",
+  "pr_auc_definition": "Average precision is the primary PR summary; trapezoidal PR area is also reported separately.",
+  "loaded_rows": 14000,
+  "excluded": {},
+  "model_versions": {
+    "3": 14000
+  },
+  "overall": {
+    "claims": 14000,
+    "labelled_anomalies": 2300,
+    "labelled_controls": 11700,
+    "prevalence": 0.16428571428571428,
+    "score_threshold_50": {
+      "precision": 0.2567348263550795,
+      "recall": 0.34391304347826085,
+      "f1": 0.29399739825311283,
+      "true_positive": 791,
+      "false_positive": 2290,
+      "false_negative": 1509,
+      "true_negative": 9410,
+      "flagged": 3081
+    },
+    "saved_review_flags": {
+      "precision": 0.23520329387545033,
+      "recall": 0.3973913043478261,
+      "f1": 0.29550598124797933,
+      "true_positive": 914,
+      "false_positive": 2972,
+      "false_negative": 1386,
+      "true_negative": 8728,
+      "flagged": 3886
+    },
+    "pr_auc_average_precision": 0.18631325821395242,
+    "pr_auc_trapezoidal": 0.18433617568352587,
+    "precision_at_k": {
+      "10": {
+        "precision": 0.1,
+        "anomalous_in_top_k": 1,
+        "boundary_score": 0.5230666065349477,
+        "ties_at_boundary": 4,
+        "tie_min_precision": 0.1,
+        "tie_max_precision": 0.1
+      },
+      "50": {
+        "precision": 0.06,
+        "anomalous_in_top_k": 3,
+        "boundary_score": 0.5222307356759412,
+        "ties_at_boundary": 1,
+        "tie_min_precision": 0.06,
+        "tie_max_precision": 0.06
+      },
+      "100": {
+        "precision": 0.14,
+        "anomalous_in_top_k": 14,
+        "boundary_score": 0.5217208881064717,
+        "ties_at_boundary": 1,
+        "tie_min_precision": 0.14,
+        "tie_max_precision": 0.14
+      }
+    }
+  },
+  "cohorts": {
+    "original_expenses": {
+      "claims": 2000,
+      "labelled_anomalies": 150,
+      "labelled_controls": 1850,
+      "prevalence": 0.075,
+      "score_threshold_50": {
+        "precision": 1.0,
+        "recall": 0.32666666666666666,
+        "f1": 0.49246231155778897,
+        "true_positive": 49,
+        "false_positive": 0,
+        "false_negative": 101,
+        "true_negative": 1850,
+        "flagged": 49
+      },
+      "saved_review_flags": {
+        "precision": 0.3225806451612903,
+        "recall": 0.4,
+        "f1": 0.35714285714285715,
+        "true_positive": 60,
+        "false_positive": 126,
+        "false_negative": 90,
+        "true_negative": 1724,
+        "flagged": 186
+      },
+      "pr_auc_average_precision": 0.8059619544785704,
+      "pr_auc_trapezoidal": 0.805715302678774,
+      "precision_at_k": {
+        "10": {
+          "precision": 1.0,
+          "anomalous_in_top_k": 10,
+          "boundary_score": 0.518567062602608,
+          "ties_at_boundary": 1,
+          "tie_min_precision": 1.0,
+          "tie_max_precision": 1.0
+        },
+        "50": {
+          "precision": 1.0,
+          "anomalous_in_top_k": 50,
+          "boundary_score": 0.49426739051284113,
+          "ties_at_boundary": 1,
+          "tie_min_precision": 1.0,
+          "tie_max_precision": 1.0
+        },
+        "100": {
+          "precision": 0.94,
+          "anomalous_in_top_k": 94,
+          "boundary_score": 0.3179029197351586,
+          "ties_at_boundary": 1,
+          "tie_min_precision": 0.94,
+          "tie_max_precision": 0.94
+        }
+      }
+    },
+    "aster_expenses": {
+      "claims": 2000,
+      "labelled_anomalies": 150,
+      "labelled_controls": 1850,
+      "prevalence": 0.075,
+      "score_threshold_50": {
+        "precision": 1.0,
+        "recall": 0.6066666666666667,
+        "f1": 0.7551867219917012,
+        "true_positive": 91,
+        "false_positive": 0,
+        "false_negative": 59,
+        "true_negative": 1850,
+        "flagged": 91
+      },
+      "saved_review_flags": {
+        "precision": 0.364,
+        "recall": 0.6066666666666667,
+        "f1": 0.455,
+        "true_positive": 91,
+        "false_positive": 159,
+        "false_negative": 59,
+        "true_negative": 1691,
+        "flagged": 250
+      },
+      "pr_auc_average_precision": 0.9846648744043082,
+      "pr_auc_trapezoidal": 0.9847160922151588,
+      "precision_at_k": {
+        "10": {
+          "precision": 1.0,
+          "anomalous_in_top_k": 10,
+          "boundary_score": 0.5216272076084298,
+          "ties_at_boundary": 1,
+          "tie_min_precision": 1.0,
+          "tie_max_precision": 1.0
+        },
+        "50": {
+          "precision": 1.0,
+          "anomalous_in_top_k": 50,
+          "boundary_score": 0.5126979912281183,
+          "ties_at_boundary": 20,
+          "tie_min_precision": 1.0,
+          "tie_max_precision": 1.0
+        },
+        "100": {
+          "precision": 1.0,
+          "anomalous_in_top_k": 100,
+          "boundary_score": 0.4992971782847237,
+          "ties_at_boundary": 10,
+          "tie_min_precision": 1.0,
+          "tie_max_precision": 1.0
+        }
+      }
+    },
+    "enterprise_transactions_imported_as_claims": {
+      "claims": 10000,
+      "labelled_anomalies": 2000,
+      "labelled_controls": 8000,
+      "prevalence": 0.2,
+      "score_threshold_50": {
+        "precision": 0.2213532811968718,
+        "recall": 0.3255,
+        "f1": 0.26350941105039466,
+        "true_positive": 651,
+        "false_positive": 2290,
+        "false_negative": 1349,
+        "true_negative": 5710,
+        "flagged": 2941
+      },
+      "saved_review_flags": {
+        "precision": 0.22115942028985508,
+        "recall": 0.3815,
+        "f1": 0.28,
+        "true_positive": 763,
+        "false_positive": 2687,
+        "false_negative": 1237,
+        "true_negative": 5313,
+        "flagged": 3450
+      },
+      "pr_auc_average_precision": 0.15987745184026728,
+      "pr_auc_trapezoidal": 0.1575849892148231,
+      "precision_at_k": {
+        "10": {
+          "precision": 0.1,
+          "anomalous_in_top_k": 1,
+          "boundary_score": 0.5230666065349477,
+          "ties_at_boundary": 4,
+          "tie_min_precision": 0.1,
+          "tie_max_precision": 0.1
+        },
+        "50": {
+          "precision": 0.04,
+          "anomalous_in_top_k": 2,
+          "boundary_score": 0.5221440085478601,
+          "ties_at_boundary": 1,
+          "tie_min_precision": 0.04,
+          "tie_max_precision": 0.04
+        },
+        "100": {
+          "precision": 0.08,
+          "anomalous_in_top_k": 8,
+          "boundary_score": 0.5216767841432617,
+          "ties_at_boundary": 5,
+          "tie_min_precision": 0.08,
+          "tie_max_precision": 0.08
+        }
+      }
+    }
+  }
+}

@@ -79,6 +79,10 @@ def test_model_reload_and_batch_invariance(tmp_path):
     rows = records()
     labels = [int(i%11 == 0) for i in range(len(rows))]
     a = train_claims(rows, labels, cfg)
+    manifest = a['metadata']['split_manifest']
+    assert len(set(sum(manifest.values(), []))) == len(rows)
+    assert manifest['train'] == [f'C{i}' for i in range(120)]
+    assert manifest['test'] == [f'C{i}' for i in range(170,200)]
     f, names = compute_features_batch(rows)
     x = np.array([[r[n] for n in names] for r in f])
     scores = score_claims(x[-10:], a)
@@ -89,3 +93,27 @@ def test_model_reload_and_batch_invariance(tmp_path):
     assert reloaded[-1]['is_flagged'] == alone['is_flagged']
     with pytest.raises(ValueError, match='known-normal'):
         train_claims(rows, [-1]*len(rows), cfg)
+
+
+def test_held_out_inputs_and_labels_cannot_change_fitted_model(tmp_path):
+    cfg = SimpleNamespace(**{k: getattr(config,k) for k in dir(config) if k.isupper()})
+    cfg.TRAINED_MODELS_DIR = tmp_path
+    cfg.AE_EPOCHS = 2; cfg.IF_N_ESTIMATORS = 10
+    torch.set_num_threads(2)
+    rows = records()
+    roles = [0]*120 + [1]*30 + [2]*20 + [3]*30
+    labels = [int(i%11 == 0) for i in range(200)]
+    first = train_claims(rows, labels, cfg, split_roles=roles)
+    changed = [dict(c) for c in rows]
+    other_labels = list(labels)
+    for i in range(170,200):
+        changed[i]['claimed_amount'] = 1e8
+        changed[i]['submitted_at'] = pd.Timestamp('2020-01-01') + pd.Timedelta(hours=i)
+        other_labels[i] = 1-labels[i]
+    second = train_claims(changed, other_labels, cfg, split_roles=roles)
+    assert first['threshold'] == second['threshold']
+    assert first['family'] == second['family']
+    assert first['metadata']['validation_candidates'] == second['metadata']['validation_candidates']
+    assert np.array_equal(first['scaler']['scale'].mean_, second['scaler']['scale'].mean_)
+    for name, tensor in first['autoencoder'].state_dict().items():
+        assert torch.equal(tensor, second['autoencoder'].state_dict()[name])

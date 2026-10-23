@@ -1,0 +1,60 @@
+{
+  "dataset": "Seven hand-authored synthetic scenarios; not a production benchmark",
+  "unit": "scenario",
+  "settings": {
+    "window_days": 7,
+    "max_hops": 4
+  },
+  "true_positive": 2,
+  "false_positive": 1,
+  "true_negative": 4,
+  "false_negative": 0,
+  "precision": 0.6666666666666666,
+  "recall": 1.0,
+  "false_positive_rate": 0.2,
+  "scenarios": [
+    {
+      "scenario": "planted_three_account_cycle",
+      "expected_review_concern": true,
+      "detected": true,
+      "result": "true_positive"
+    },
+    {
+      "scenario": "planted_two_account_cycle",
+      "expected_review_concern": true,
+      "detected": true,
+      "result": "true_positive"
+    },
+    {
+      "scenario": "normal_open_chain",
+      "expected_review_concern": false,
+      "detected": false,
+      "result": "true_negative"
+    },
+    {
+      "scenario": "different_currencies",
+      "expected_review_concern": false,
+      "detected": false,
+      "result": "true_negative"
+    },
+    {
+      "scenario": "simultaneous_entries",
+      "expected_review_concern": false,
+      "detected": false,
+      "result": "true_negative"
+    },
+    {
+      "scenario": "outside_window",
+      "expected_review_concern": false,
+      "detected": false,
+      "result": "true_negative"
+    },
+    {
+      "scenario": "legitimate_purchase_and_refund",
+      "expected_review_concern": false,
+      "detected": true,
+      "result": "false_positive"
+    }
+  ],
+  "limitations": "A legitimate refund is structurally a cycle and is flagged. Labels describe fictional context. Results do not measure real-world fraud detection or ML performance."
+}

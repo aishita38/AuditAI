@@ -1,0 +1,12 @@
+.transfer-controls { display: flex; flex-wrap: wrap; align-items: end; gap: 1rem; }
+.transfer-controls label { display: grid; gap: .5rem; }
+.transfer-controls input { max-width: 100%; padding: .6rem; border: 1px solid var(--border-light, #555); border-radius: 8px; background: var(--bg-secondary, #17202b); color: inherit; }
+.transfer-controls input[type=number] { width: 160px; }
+.transfer-path { display: flex; flex-wrap: wrap; padding: 0; list-style: none; gap: .5rem; margin: 1rem 0; font-weight: 600; overflow-wrap: anywhere; }
+.circular-payments h1, .circular-payments h2 { line-height: 1.4; }
+.circular-payments .table-container { overflow-x: auto; }
+.circular-payments p { line-height: 1.6; }
+.transfer-review-form { display: grid; gap: 1rem; margin: 1rem 0; }
+.transfer-review-form label { display: grid; gap: .5rem; }
+.transfer-review-form textarea, .transfer-review-form select { background: var(--bg-secondary, #17202b); color: inherit; border: 1px solid var(--border-light, #555); border-radius: 8px; padding: .75rem; }
+.transfer-review-form textarea { min-height: 90px; }
