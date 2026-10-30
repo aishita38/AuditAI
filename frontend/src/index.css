@@ -314,12 +314,23 @@ button {
 
 /* Table */
 .table-container {
+  overflow: auto;
   overflow-x: auto;
+  overflow-y: auto;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-glass);
-  max-height: 500px;
+  max-height: 560px;
   /* Enable scrolling for sticky headers */
   position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-container.glass-card,
+.glass-card.table-container {
+  overflow: auto !important;
+  overflow-y: auto !important;
+  overflow-x: auto !important;
+  padding: 0;
 }
 
 table {

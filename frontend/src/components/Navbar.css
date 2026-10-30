@@ -102,7 +102,50 @@
 .navbar-user strong { color: #f2eee9; font-size: .76rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 145px; }
 .navbar-user small { color: #aaa5a0; font-size: .64rem; text-transform: capitalize; }
 .navbar-signout { color: #ddd4cd; }
-@media (max-width: 850px) { .navbar-user { display: none; } .navbar-links { gap: 1px; } .nav-link { padding: 8px 10px; } }
-@media (min-width: 701px) and (max-width: 1150px) { .nav-link span { display: none; } .nav-link { padding: 9px 12px; } }
+.navbar-workspace-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.78rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.navbar-workspace-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.navbar-workspace-edition {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+
+.navbar-settings-btn {
+  padding: 8px !important;
+  color: var(--text-secondary);
+}
+
+.navbar-settings-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 900px) {
+  .navbar-workspace-badge { display: none; }
+}
 
 .brand-logo { width: 76px; height: 54px; object-fit: contain; flex-shrink: 0; image-rendering: pixelated; }

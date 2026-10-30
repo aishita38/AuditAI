@@ -8,6 +8,34 @@ import { TYPES, STATES } from './reviewLabels';
 import './CircularPayments.css';
 import './ReviewCases.css';
 
+function formatCaseNote(note) {
+  if (!note) return null;
+  const trimmed = String(note).trim();
+  if (trimmed.startsWith('{') && trimmed.endsWith('}')) {
+    try {
+      const parsed = JSON.parse(trimmed);
+      if (parsed.checks && Array.isArray(parsed.checks)) {
+        const reviewChecks = parsed.checks.filter(c => c.status === 'review');
+        const passChecks = parsed.checks.filter(c => c.status === 'pass');
+        return (
+          <div className="mt-1">
+            <div className="text-primary font-medium">
+              {reviewChecks.length > 0
+                ? `Policy review required: ${reviewChecks.map(c => c.code.replace(/_/g, ' ')).join(', ')}`
+                : `All policy checks passed (${passChecks.length} rules verified)`}
+            </div>
+            <details className="mt-1">
+              <summary className="text-xs text-muted cursor-pointer hover:text-secondary">View technical check payload</summary>
+              <pre className="mono-pre mt-1 p-2 text-xs overflow-x-auto" style={{ maxHeight: '120px' }}>{trimmed}</pre>
+            </details>
+          </div>
+        );
+      }
+    } catch {}
+  }
+  return <p>{note}</p>;
+}
+
 export default function CaseDetail() {
   const {caseId}=useParams();
   const [params]=useSearchParams();
@@ -38,8 +66,7 @@ export default function CaseDetail() {
         <label>Review notes<textarea required minLength={5} maxLength={5000} value={notes} onChange={e=>setNotes(e.target.value)}/></label><button className="btn btn-primary" disabled={busy||notes.trim().length<5}>{permissions.can_make?'Submit maker recommendation':'Submit checker sign-off'}</button>
       </form>:<p>{permissions.maker_reason} {permissions.checker_reason}</p>}
       <p>Maker and checker must be different people. The server checks permissions on every action.</p>
-      <form className="transfer-review-form" onSubmit={e=>{e.preventDefault();mutate(()=>reviewQueueApi.comment(item.id,comment));}}><label>Comment<textarea required minLength={5} maxLength={5000} value={comment} onChange={e=>setComment(e.target.value)}/></label><button className="btn btn-secondary" disabled={busy||comment.trim().length<5}>Add comment</button></form>
-      <h2>Audit trail</h2>{item.audit_trail?.length?<ol>{item.audit_trail.map(e=><li key={e.id}><strong>{e.action}</strong> · {e.actor} · {e.timestamp}<p>{e.notes}</p></li>)}</ol>:<p>No audit events saved.</p>}
+      <h2>Audit trail</h2>{item.audit_trail?.length?<ol>{item.audit_trail.map(e=><li key={e.id}><strong>{e.action}</strong> · {e.actor} · {new Date(e.timestamp).toLocaleString()}{formatCaseNote(e.notes)}</li>)}</ol>:<p>No audit events saved.</p>}
     </article></RecordLinksProvider>}
   </main>;
 }

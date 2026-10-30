@@ -1,0 +1,173 @@
+/* Claim Detail Modern Redesign */
+.claim-header-card {
+  padding: 20px 24px;
+  background: rgba(13, 19, 33, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+}
+
+.claim-amount-highlight {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.claim-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-glass);
+}
+
+.claim-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.claim-meta-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.claim-meta-value {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* 2-Column Overview */
+.claim-overview-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 20px;
+}
+
+@media (max-width: 950px) {
+  .claim-overview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Risk Card */
+.risk-card-compact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+}
+
+.risk-verdict-banner {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  margin-top: 14px;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.risk-verdict-low {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #34d399;
+}
+
+.risk-verdict-moderate {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #fbbf24;
+}
+
+.risk-verdict-high {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+}
+
+/* Diagnostics Accordion */
+.risk-diagnostics-dropdown {
+  width: 100%;
+  margin-top: 14px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  text-align: left;
+  font-size: 0.78rem;
+}
+
+.risk-diagnostics-dropdown summary {
+  padding: 9px 12px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-weight: 500;
+  user-select: none;
+  transition: color 0.15s ease;
+}
+
+.risk-diagnostics-dropdown summary:hover {
+  color: var(--text-primary);
+}
+
+.risk-diagnostics-content {
+  padding: 12px;
+  border-top: 1px solid var(--border-glass);
+}
+
+.diagnostics-metric-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.diagnostics-metric-box {
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Tabs */
+.claim-section-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border-glass);
+  padding-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.claim-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.claim-tab-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.claim-tab-btn.active {
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  border-color: var(--border-glass);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}

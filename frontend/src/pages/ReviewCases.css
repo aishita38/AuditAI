@@ -10,6 +10,21 @@
 .evidence-records dd { margin:0; } .evidence-records dt { font-weight:600; }
 .evidence-records summary, .related-records summary { cursor:pointer; padding:12px 0; }
 
+.review-queue-table-container {
+  overflow-y: auto !important;
+  overflow-x: auto !important;
+  max-height: 560px;
+  position: relative;
+  border-radius: var(--radius-md, 12px);
+}
+
+.review-queue-table-container th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #181818;
+}
+
 .master-checks h2 { margin:24px 0 16px; font-size:1.4rem; }
 .master-checks p { margin:12px 0; line-height:1.6; }
 .master-checks .check-actions { display:flex; gap:18px; align-items:center; flex-wrap:wrap; margin:20px 0; }

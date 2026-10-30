@@ -8,10 +8,12 @@ import DetectionOverview from '../components/DetectionOverview';
 import ScoreBadge from '../components/ScoreBadge';
 import LoadingSkeleton from '../components/LoadingSkeleton';
 import ExplainabilityPanel from '../components/ExplainabilityPanel';
+import { useAuditProfile } from '../context/AuditProfileContext';
 
 export default function Dashboard() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { profile, companyName, currency } = useAuditProfile();
 
   // Table Filters
   const [statusFilter, setStatusFilter] = useState('all');
@@ -85,10 +87,18 @@ export default function Dashboard() {
   return (
     <div className="main-content">
       {/* Entity Context Breadcrumbs */}
-      <div className="flex items-center gap-2 text-sm text-muted mb-2">
-        <span>Global Auditing</span>
-        <span>/</span>
-        <span className="text-secondary font-medium">APAC Entity · INR</span>
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center gap-2 text-sm text-muted">
+          <span>Global Auditing</span>
+          <span>/</span>
+          <span className="text-secondary font-medium">{companyName} · {currency}</span>
+        </div>
+        <span
+          className="badge text-xs"
+          style={{ background: `${profile.color}20`, color: profile.color, border: `1px solid ${profile.color}40` }}
+        >
+          {profile.name}
+        </span>
       </div>
 
       <div className="flex justify-between items-center mb-6">

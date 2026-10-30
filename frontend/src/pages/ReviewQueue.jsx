@@ -33,11 +33,111 @@ export default function ReviewQueue() {
       <button className="btn btn-secondary" disabled={busy}>Refresh queue</button>
     </form>
     {error&&<p role="alert">{error}</p>}{busy&&<p role="status">Loading queue...</p>}
-    {data&&<><p>{data.total} cases matching filters</p><div className="glass-card table-container"><table><thead><tr><th>Case</th><th>Type</th><th>Severity</th><th>Reason</th><th>Status</th></tr></thead><tbody>{data.items.map(c=>{
-      const url=caseUrl(c.id);
-      return <tr key={c.id} className="review-case-row" role="link" tabIndex={0} aria-label={`Open case #${c.id}`} onClick={e=>{if(!e.target.closest('a'))navigate(url);}} onKeyDown={e=>{if(e.target===e.currentTarget&&(e.key==='Enter'||e.key===' ')){e.preventDefault();navigate(url);}}}>
-        <td><Link className="case-number-link" to={url}>#{c.id}</Link></td><td>{TYPES[c.case_type]||c.case_type}</td><td>{c.severity}</td><td>{c.reason}</td><td>{STATES[c.status]||c.status}</td>
-      </tr>;
-    })}</tbody></table>{!data.items.length&&<p>No cases match these filters.</p>}</div><div className="transfer-controls"><button className="btn btn-secondary" disabled={!offset||busy} onClick={()=>setParams(p=>{p.set('offset',String(Math.max(0,offset-50)));return p;})}>Previous</button><button className="btn btn-secondary" disabled={offset+50>=data.total||busy} onClick={()=>setParams(p=>{p.set('offset',String(offset+50));return p;})}>Next</button></div></>}
+    {data && (
+      <>
+        <div className="flex items-center justify-between mb-3">
+          <p className="text-xs text-muted">
+            Showing {data.total ? offset + 1 : 0}–{Math.min(offset + 50, data.total)} of {data.total} cases matching filters
+          </p>
+          <div className="text-xs text-muted">
+            Scroll down to inspect all {data.items.length} loaded records
+          </div>
+        </div>
+
+        <div
+          className="glass-card table-container review-queue-table-container mb-4"
+          style={{ overflowY: 'auto', overflowX: 'auto', maxHeight: '560px' }}
+        >
+          <table>
+            <thead>
+              <tr>
+                <th style={{ position: 'sticky', top: 0, zIndex: 10 }}>Case</th>
+                <th style={{ position: 'sticky', top: 0, zIndex: 10 }}>Type</th>
+                <th style={{ position: 'sticky', top: 0, zIndex: 10 }}>Severity</th>
+                <th style={{ position: 'sticky', top: 0, zIndex: 10 }}>Reason</th>
+                <th style={{ position: 'sticky', top: 0, zIndex: 10 }}>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.items.map(c => {
+                const url = caseUrl(c.id);
+                const sev = String(c.severity).toLowerCase();
+                const badgeClass =
+                  sev === 'critical' || sev === 'high'
+                    ? 'badge-red'
+                    : sev === 'medium'
+                    ? 'badge-amber'
+                    : 'badge-blue';
+
+                return (
+                  <tr
+                    key={c.id}
+                    className="review-case-row"
+                    role="link"
+                    tabIndex={0}
+                    aria-label={`Open case #${c.id}`}
+                    onClick={e => {
+                      if (!e.target.closest('a')) navigate(url);
+                    }}
+                    onKeyDown={e => {
+                      if (e.target === e.currentTarget && (e.key === 'Enter' || e.key === ' ')) {
+                        e.preventDefault();
+                        navigate(url);
+                      }
+                    }}
+                  >
+                    <td>
+                      <Link className="case-number-link font-semibold" to={url}>
+                        #{c.id}
+                      </Link>
+                    </td>
+                    <td>{TYPES[c.case_type] || c.case_type}</td>
+                    <td>
+                      <span className={`badge text-xs uppercase ${badgeClass}`}>{c.severity}</span>
+                    </td>
+                    <td className="text-secondary text-xs">{c.reason}</td>
+                    <td>
+                      <span className="badge text-xs uppercase">{STATES[c.status] || c.status}</span>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          {!data.items.length && (
+            <div className="py-12 text-center text-secondary text-sm">
+              No cases match these filters.
+            </div>
+          )}
+        </div>
+
+        <div className="transfer-controls mb-6">
+          <button
+            className="btn btn-secondary text-xs"
+            disabled={!offset || busy}
+            onClick={() =>
+              setParams(p => {
+                p.set('offset', String(Math.max(0, offset - 50)));
+                return p;
+              })
+            }
+          >
+            Previous
+          </button>
+          <button
+            className="btn btn-secondary text-xs"
+            disabled={offset + 50 >= data.total || busy}
+            onClick={() =>
+              setParams(p => {
+                p.set('offset', String(offset + 50));
+                return p;
+              })
+            }
+          >
+            Next
+          </button>
+        </div>
+      </>
+    )}
   </main>;
 }
